@@ -7,3 +7,6 @@ dev_server:
 unic_server:
 	export DJANGO_SETTINGS_MODULE=fourth.settings
 	gunicorn fourth.wsgi
+
+requiremets.txt:
+	poetry export -f requirements.txt --output requirements.txt
