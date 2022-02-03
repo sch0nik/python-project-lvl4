@@ -18,7 +18,7 @@ from django.urls import path, include
 from fourth import views
 
 urlpatterns = [
-    path('', views.index),
+    path('/', views.index),
     path('task_manager/', include('fourth.task_manager.urls')),
     path('admin/', admin.site.urls),
 ]

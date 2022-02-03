@@ -13,3 +13,6 @@ requiremets.txt:
 
 push_heroku:
 	git push heroku main
+
+run_heroku:
+	heroku ps:scale web=1
