@@ -10,3 +10,6 @@ unic_server:
 
 requiremets.txt:
 	poetry export -f requirements.txt --output requirements.txt
+
+push_heroku:
+	git push heroku main
