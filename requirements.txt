@@ -18,6 +18,12 @@ backports.zoneinfo==0.2.1; python_version < "3.9" and python_version >= "3.8" \
     --hash=sha256:1b13e654a55cd45672cb54ed12148cd33628f672548f373963b0bff67b217328 \
     --hash=sha256:4a0f800587060bf8880f954dbef70de6c11bbe59c673c3d818921f042f9954a6 \
     --hash=sha256:fadbfe37f74051d024037f223b8e001611eac868b5c5b06144ef4d8b799862f2
+beautifulsoup4==4.10.0; python_full_version > "3.0.0" and python_version >= "3.7" \
+    --hash=sha256:9a315ce70049920ea4572a4055bc4bd700c940521d36fc858205ad4fcde149bf \
+    --hash=sha256:c23ad23c521d818955a4151a67d81580319d4bf548d3d49f4223ae041ff98891
+django-bootstrap4==21.2; python_version >= "3.7" \
+    --hash=sha256:0b9eeafecd132c0e6af8688493816fc2ae172d2eb3d98e66dc5eb48757da65df \
+    --hash=sha256:46f9ea3789bc1a2fa5db94b9439e2a755cca582af06af0c6cfc76d70b6e5702c
 django==4.0.2; python_version >= "3.8" \
     --hash=sha256:996495c58bff749232426c88726d8cd38d24c94d7c1d80835aafffa9bc52985a \
     --hash=sha256:110fb58fb12eca59e072ad59fc42d771cd642dd7a2f2416582aa9da7a8ef954a
@@ -27,6 +33,9 @@ gunicorn==20.1.0; python_version >= "3.5" \
 python-dotenv==0.19.2; python_version >= "3.5" \
     --hash=sha256:a5de49a31e953b45ff2d2fd434bbc2670e8db5273606c1e737cc6b93eff3655f \
     --hash=sha256:32b2bdc1873fd3a3c346da1c6db83d0053c3c62f28f1f38516070c4c8971b1d3
+soupsieve==2.3.1; python_full_version > "3.0.0" and python_version >= "3.7" \
+    --hash=sha256:1a3cca2617c6b38c0343ed661b1fa5de5637f257d4fe22bd9f1338010a1efefb \
+    --hash=sha256:b8d49b1cd4f037c7082a9683dfa1801aa2597fb11c3a1155b7a5b94829b4f1f9
 sqlparse==0.4.2; python_version >= "3.8" \
     --hash=sha256:48719e356bb8b42991bdbb1e8b83223757b93789c00910a616a071910ca4a64d \
     --hash=sha256:0c00730c74263a94e5a9919ade150dfc3b19c574389985446148402998287dae

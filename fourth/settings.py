@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'fourth',
     'fourth.task_manager',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
