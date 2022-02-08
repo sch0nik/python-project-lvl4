@@ -16,3 +16,6 @@ push_heroku:
 
 run_heroku:
 	heroku ps:scale web=1
+
+lint:
+	poetry run flake8 fourth
