@@ -1,18 +1,15 @@
 <!doctype html>
-<html lang="en" class="h-100">
+{% load i18n %}
+<html lang="ru">
   <head>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>Sticky Footer Navbar Template · Bootstrap</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/">
+    <title>{% translate "Менеджер задач" %}</title>
 
     <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -30,47 +27,32 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="sticky-footer-navbar.css" rel="stylesheet">
+    <link href="cover.css" rel="stylesheet">
   </head>
-  <body class="d-flex flex-column h-100">
-    <header>
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Меню</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Вход</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Регистрация</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Пользователи</a>
-        </li>
-      </ul>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-5">
+    <div class="inner">
+      <h3 class="masthead-brand">{% translate "Менеджер задач" %}</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link active" href="#">{% translate "Вход" %}</a>
+        <a class="nav-link" href="#">{% translate "Регистрация" %}</a>
+        <a class="nav-link" href="#">{% translate "Пользователи" %}</a>
+      </nav>
     </div>
-  </nav>
-</header>
+  </header>
 
-<!-- Begin page content -->
-<main role="main" class="flex-shrink-0">
-  <div class="container">
-    <h1 class="mt-5">Привет всем!!!</h1>
-    <p class="lead">
-      Тут текст.
-    </p>
-  </div>
-</main>
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">{% translate "Загловок main`a" %}</h1>
+    <p class="lead">{% translate "Содержимое" %}</p>
+  </main>
 
-<footer class="footer mt-auto py-3">
-  <div class="container">
-    <span class="text-muted">4-й проект. Автор: Ануфриев Николай.</span>
-  </div>
-</footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+      <p>{% translate "Футер страницы" %}</p>
+    </div>
+  </footer>
+</div>
+{% bootstrap_javascript jquery='full' %}
+</body>
 </html>
