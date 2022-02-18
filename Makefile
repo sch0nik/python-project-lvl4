@@ -33,4 +33,4 @@ shell:
 	poetry run python django-admin shell
 
 test:
-	poetry run pytest -vv page_loader tests
+	poetry run pytest -vv fourth tests
