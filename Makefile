@@ -19,3 +19,12 @@ run_heroku:
 
 lint:
 	poetry run flake8 fourth
+
+makemigrations:
+	poetry run python manage.py makemigrations
+
+migrate:
+	poetry run python manage.py migrate
+
+shell:
+	poetry run python django-admin shell
