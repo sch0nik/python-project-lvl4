@@ -43,13 +43,26 @@
   </header>
 
   <main role="main" class="inner cover">
-    <h1 class="cover-heading">{% translate "Загловок main`a" %}</h1>
-    <p class="lead">{% translate "Содержимое" %} {% translate var %}</p>
+    <h1 class="cover-heading">
+      {% translate "4-й проект курса 'Python-разработчик'" %}
+    </h1>
+    <p class="lead">
+      {% translate "Нужно разработать приложение типа 'менеджер задач'." %}
+    </p>
+    <p class="lead">
+      {% translate "В проекте используется:" %}
+      <p>{% translate "Django" %}</p>
+      <p>{% translate "Django-bootstrap 4" %}</p>
+      <p>{% translate "PostgreSQL" %}</p>
+      {% translate var %}
+    </p>
   </main>
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
-      <p>{% translate "Футер страницы" %}</p>
+      <p>
+        <a href="https://github.com/sch0nik/python-project-lvl4">Repo</a>
+      </p>
     </div>
   </footer>
 </div>
