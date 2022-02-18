@@ -1,3 +1,6 @@
+install:
+	poetry install
+
 init:
 	poetry init
 
