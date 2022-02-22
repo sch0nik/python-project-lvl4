@@ -1,0 +1,71 @@
+<!doctype html>
+{% load i18n %}
+<html lang="ru">
+  <head>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>{% translate "Менеджер задач" %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-5">
+      <div class="inner">
+        <h3 class="masthead-brand">{% translate "Менеджер задач" %}</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" href="#">{% translate "Вход" %}</a>
+          <a class="nav-link" href="#">{% translate "Регистрация" %}</a>
+          <a class="nav-link" href="#">{% translate "Пользователи" %}</a>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">
+        {% translate "4-й проект курса 'Python-разработчик'" %}
+      </h1>
+      <p class="lead">
+        {% translate "Нужно разработать приложение типа 'менеджер задач'." %}
+      </p>
+      <p class="lead">
+        {% translate "В проекте используется:" %}
+        <p>"Django"</p><p>"Django-bootstrap 4"</p><p>"PostgreSQL"</p>
+        {% translate var %}
+      </p>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="container my-5 pt-4 border-top">
+        <p>
+          <a href="https://github.com/sch0nik/python-project-lvl4">
+            {% translate "Репозиторий проекта." %}
+          </a>
+        </p>
+      </div>
+    </footer>
+    </div>
+  </body>
+</html>

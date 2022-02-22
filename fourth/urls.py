@@ -15,10 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from fourth import views
+from fourth.task_manager import views
 
 urlpatterns = [
-    path('', views.index),
-    path('task_manager/', include('fourth.task_manager.urls')),
+    path('', views.IndexView.as_view(), name='index'),
     path('admin/', admin.site.urls),
 ]
