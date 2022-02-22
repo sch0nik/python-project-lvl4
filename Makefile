@@ -30,7 +30,7 @@ migrate:
 	poetry run python manage.py migrate
 
 shell:
-	poetry run python django-admin shell
+	poetry run django-admin shell
 
 test:
 	poetry run pytest -vv fourth tests

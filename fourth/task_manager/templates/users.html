@@ -1,4 +1,25 @@
 {% load i18n %}
 <main role="main" class="inner cover">
-  <p>Пока нет пользователей.</p>
+  {% if users %}
+      <table class="table table-striped">
+        <thead>
+          <th>ID</th>
+          <th>{% translate "Имя пользователя" %}</th>
+          <th>{% translate "Полное имя" %}</th>
+          <th>{% translate "Дата создания" %}</th>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.user_name }}</td>
+              <td>{{ user.first_name }}</td>
+              <td>{{ user.last_name }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  {% else %}
+    <p>{% translate "Нет пользователей" %}</p>
+  {% endif %}
 </main>
