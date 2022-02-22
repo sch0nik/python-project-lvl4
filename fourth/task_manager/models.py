@@ -1,8 +1,10 @@
 from django.db import models
 
-# Create your models here.
-# model user
-# name
-# last_name
-# username
-# password.
+
+class User(models.Model):
+    name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    user_name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f'{self.user_name}'
