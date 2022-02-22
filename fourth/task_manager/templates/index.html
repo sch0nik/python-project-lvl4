@@ -5,7 +5,13 @@
   <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       {% include 'header.html' %}
-      {% include 'main.html' %}
+
+      {% if main == 'main.html' %}
+        {% include main %}
+      {% else %}
+        {{main}}
+      {% endif %}
+
       {% include 'footer.html' %}
     </div>
   </body>

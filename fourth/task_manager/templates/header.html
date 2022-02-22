@@ -1,11 +1,11 @@
 {% load i18n %}
 <header class="masthead mb-5">
   <div class="inner">
-    <h3 class="masthead-brand">{% translate "Менеджер задач" %}</h3>
-    <nav class="nav nav-masthead justify-content-center">
-      <a class="nav-link active" href="#">{% translate "Вход" %}</a>
-      <a class="nav-link" href="#">{% translate "Регистрация" %}</a>
-      <a class="nav-link" href="#">{% translate "Пользователи" %}</a>
-    </nav>
+    <h3 class="masthead-brand">
+      <a href="{% url 'index' %}">
+        {% translate "Менеджер задач" %}
+      </a>
+    </h3>
+    {% include 'nav.html' %}
   </div>
 </header>
