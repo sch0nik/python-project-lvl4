@@ -4,12 +4,17 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic.base import TemplateView
 
+import fourth.settings
+
 
 class IndexView(TemplateView):
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html', context={'main': 'main.html'})
+        return render(request, 'index.html', context={
+            'main': 'main.html',
+            'msg': fourth.settings.DEBUG,
+        })
 
 
 class UsersView(TemplateView):
