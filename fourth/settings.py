@@ -82,4 +82,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    'task_manager/static',
+]
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
