@@ -53,7 +53,7 @@ class RegisterView(TemplateView):
             user.first_name = first_name
             user.last_name = last_name
             user.save()
-
+            login(request, user)
             return redirect(reverse("index"))
         else:
             return render(
