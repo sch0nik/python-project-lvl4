@@ -1,25 +1,40 @@
+<!doctype html>
 {% load i18n %}
-<main role="main" class="inner cover">
-  {% if users %}
-      <table class="table table-striped">
-        <thead>
-          <th>ID</th>
-          <th>{% translate "Имя пользователя" %}</th>
-          <th>{% translate "Полное имя" %}</th>
-          <th>{% translate "Дата создания" %}</th>
-        </thead>
-        <tbody>
-          {% for user in users %}
-            <tr>
-              <td>{{ user.id }}</td>
-              <td>{{ user.user_name }}</td>
-              <td>{{ user.first_name }}</td>
-              <td>{{ user.last_name }}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-  {% else %}
-    <p>{% translate "Нет пользователей" %}</p>
-  {% endif %}
-</main>
+<html lang="ru">
+  {% include 'head.html' %}
+  <body class="text-center">
+    <div class="container wrapper flex-grow-1">
+      {% include 'header.html' %}
+
+      <main role="main" class="inner cover">
+        <h1>{% translate "Пользователи" %}</h1>
+        <br>
+        {% if users %}
+            <table class="table table-striped">
+              <thead>
+                <th>ID</th>
+                <th>{% translate "Имя пользователя" %}</th>
+                <th>{% translate "Полное имя" %}</th>
+                <th>{% translate "Дата создания" %}</th>
+              </thead>
+              <tbody>
+                {% for user in users %}
+                  <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name}} {{ user.last_name }}</td>
+                    <td>{{ user.date_joined }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        {% else %}
+           <p>{% translate "Нет пользователей" %}</p>
+        {% endif %}
+      </main>
+
+      {% include 'footer.html' %}
+    </div>
+  </body>
+</html>
+

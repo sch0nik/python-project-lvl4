@@ -21,5 +21,7 @@ from fourth.task_manager import views
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('users/', views.UsersView.as_view(), name='users'),
+    path('users/create/', views.RegisterView.as_view(), name='register'),
+    path('login/', views.LoginView.as_view(), name='login'),
     path('admin/', admin.site.urls),
 ]
