@@ -34,3 +34,6 @@ shell:
 
 test:
 	poetry run pytest -vv fourth tests
+
+bash_heroku:
+	@heroku run bash
