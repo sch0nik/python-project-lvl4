@@ -15,7 +15,7 @@ requiremets.txt:
 	poetry export -f requirements.txt --output requirements.txt
 
 push_heroku:
-	git push heroku main
+	@git push heroku main
 
 run_heroku:
 	heroku ps:scale web=1
