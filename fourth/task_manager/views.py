@@ -1,3 +1,5 @@
+import os
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
@@ -13,7 +15,11 @@ class IndexView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, 'index.html', context={
             'main': 'main.html',
-            'msg': fourth.settings.DEBUG,
+            'msg': list({
+                'DEBUG': fourth.settings.DEBUG,
+                'STATIC': fourth.settings.STATIC_URL,
+                'PATH': os.getcwd(),
+            }.items()),
         })
 
 
