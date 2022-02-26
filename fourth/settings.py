@@ -1,7 +1,9 @@
-from pathlib import Path
-from dotenv import load_dotenv, find_dotenv
+import os
 from os import getenv
+from pathlib import Path
+
 import dj_database_url
+from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
@@ -80,10 +82,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    'task_manager/static',
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

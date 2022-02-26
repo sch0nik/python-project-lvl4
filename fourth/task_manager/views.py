@@ -14,11 +14,11 @@ class IndexView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'index.html', context={
-            'main': 'main.html',
             'msg': list({
                 'DEBUG': fourth.settings.DEBUG,
                 'STATIC': fourth.settings.STATIC_URL,
                 'PATH': os.getcwd(),
+                'BASE_DIR': fourth.settings.BASE_DIR,
             }.items()),
         })
 
