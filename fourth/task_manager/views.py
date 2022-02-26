@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -58,7 +59,7 @@ class RegisterView(TemplateView):
             return render(
                 request,
                 self.template_name,
-                context={'msg': 'Пароли не сопадают.'},
+                context={'msg': 'Пароли не сопадают'},
             )
 
 
@@ -72,7 +73,26 @@ class LoginView(TemplateView):
         )
 
     def post(self, request, *args, **kwargs):
-        return render(
-            request,
-            self.template_name,
-        )
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("/")
+        else:
+            msg = "Логин или пароль неверные"
+            return render(request, self.template_name, context={'msg': msg})
+
+
+class LogoutView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect("/")
+
+
+class UpdateView(TemplateView):
+    template_name = 'update.html'
+
+
+class DeleteView(TemplateView):
+    template_name = 'delete.html'
