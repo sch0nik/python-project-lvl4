@@ -10,10 +10,10 @@ import fourth.settings
 
 
 class IndexView(TemplateView):
-    template_name = 'index.html'
+    template_name = 'base.html'
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html', context={
+        return render(request, self.template_name, context={
             'msg': list({
                 'DEBUG': fourth.settings.DEBUG,
                 'STATIC': fourth.settings.STATIC_URL,
@@ -24,23 +24,29 @@ class IndexView(TemplateView):
 
 
 class UsersView(TemplateView):
-    template_name = 'users.html'
-
-    def get(self, request, *args, **kwargs):
-        return render(
-            request,
-            'users.html',
-            context={'users': User.objects.all()},
-        )
-
-
-class RegisterView(TemplateView):
-    template_name = 'register.html'
+    template_name = 'base_users.html'
 
     def get(self, request, *args, **kwargs):
         return render(
             request,
             self.template_name,
+            context={
+                'users': User.objects.order_by('id'),
+                'active': 'active'
+            },
+        )
+
+
+class RegisterView(TemplateView):
+    template_name = 'base_register.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(
+            request,
+            self.template_name,
+            context={
+                'active': 'active'
+            }
         )
 
     def post(self, request, *args, **kwargs):
@@ -55,7 +61,10 @@ class RegisterView(TemplateView):
             return render(
                 request,
                 self.template_name,
-                context={'msg': 'Такой пользователь уже есть'}
+                context={
+                    'msg': 'Такой пользователь уже есть',
+                    'active': 'active'
+                }
             )
         if password1 == password2:
             user = User()
@@ -70,17 +79,23 @@ class RegisterView(TemplateView):
             return render(
                 request,
                 self.template_name,
-                context={'msg': 'Пароли не сопадают'},
+                context={
+                    'msg': 'Такой пользователь уже есть',
+                    'active': 'active'
+                },
             )
 
 
 class LoginView(TemplateView):
-    template_name = 'login.html'
+    template_name = 'base_login.html'
 
     def get(self, request, *args, **kwargs):
         return render(
             request,
             self.template_name,
+            context={
+                'active': 'active'
+            }
         )
 
     def post(self, request, *args, **kwargs):
@@ -92,7 +107,10 @@ class LoginView(TemplateView):
             return redirect("/")
         else:
             msg = "Логин или пароль неверные"
-            return render(request, self.template_name, context={'msg': msg})
+            return render(request, self.template_name, context={
+                'msg': msg,
+                'active': 'active'
+            })
 
 
 class LogoutView(TemplateView):

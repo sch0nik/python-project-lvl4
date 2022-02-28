@@ -1,13 +1,34 @@
-<!doctype html>
-{% load i18n %}
-<html lang="ru">
-  {% include 'head.html' %}
-  <body class="text-left">
-    <div class="container wrapper flex-grow-1">
-      {% include 'header.html' %}
+{% extends "base.html" %}
 
-      <main role="main" class="inner cover">
-        <h1>{% translate "Регистрация" %}</h1>
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+{% block nav %}
+    <nav class="nav nav-masthead justify-content-center">
+      {% if user.username %}
+        <a class="nav-link" href="{% url 'logout' %}">
+          {% translate "Выход" %}
+        </a>
+      {% else %}
+        <a class="nav-link" href="{% url 'login' %}">
+          {% translate "Вход" %}
+        </a>
+        <a class="nav-link {{ active }}" href="{% url 'register' %}">
+          {% translate "Регистрация" %}
+        </a>
+      {% endif %}
+      <a class="nav-link" href="{% url 'users' %}">
+        {% translate "Пользователи" %}
+      </a>
+    </nav>
+{% endblock %}
+
+{% block main %}
+    <main role="main" class="inner cover">
+        <h1 class="text-center">{% translate "Регистрация" %}</h1>
         {% if msg %}
           <h5>{% translate msg %}</h5>
         {% endif %}
@@ -85,10 +106,5 @@
                     value="Зарегистрировать">
           </div>
           </form>
-      </main>
-
-      {% include 'footer.html' %}
-    </div>
-  </body>
-</html>
-
+    </main>
+{% endblock %}

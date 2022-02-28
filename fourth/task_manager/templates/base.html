@@ -1,0 +1,91 @@
+<!doctype html>
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>{% translate "Менеджер задач" %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'cover.css' %}" rel="stylesheet">
+  </head>
+  <body class="text-left">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-5">
+        <div class="inner">
+          <h3 class="masthead-brand">
+            <a href="{% url 'index' %}">
+              <p class="text-center">{% translate "Менеджер задач" %}</p>
+            </a>
+          </h3>
+          {% block nav %}
+          <nav class="nav nav-masthead justify-content-center">
+            {% if user.username %}
+              <a class="nav-link" href="{% url 'logout' %}">
+                {% translate "Выход" %}
+              </a>
+            {% else %}
+              <a class="nav-link" href="{% url 'login' %}">
+                {% translate "Вход" %}
+              </a>
+              <a class="nav-link" href="{% url 'register' %}">
+                {% translate "Регистрация" %}
+              </a>
+            {% endif %}
+            <a class="nav-link" href="{% url 'users' %}">
+              {% translate "Пользователи" %}
+            </a>
+          </nav>
+          {% endblock %}
+        </div>
+      </header>
+      {% block main %}
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">
+          {% translate "4-й проект курса 'Python-разработчик'" %}
+        </h1>
+        <p class="lead">
+          {% translate "Нужно разработать приложение типа 'менеджер задач'." %}
+        </p>
+        <ul class="lead">
+          {% translate "В проекте используется:" %}
+          <li>"Django"</li>
+          <li>"Django-bootstrap 4"</li>
+          <li>"PostgreSQL"</li>
+        </ul>
+      </main>
+      {% endblock %}
+      <footer class="mastfoot mt-auto text-left">
+        <div class="container my-5 pt-4 border-top">
+            <p>
+              <a href="https://github.com/sch0nik/python-project-lvl4">
+                {% translate "Репозиторий проекта." %}
+              </a>
+            </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
