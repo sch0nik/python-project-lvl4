@@ -33,7 +33,7 @@
           <h5>{% translate msg %}</h5>
         {% endif %}
         <br>
-        <form method="post">
+        {% comment %}<form method="post">
           {% csrf_token %}
           <div class="form-group">
             <label for="id_first_name">Имя</label>
@@ -105,6 +105,16 @@
                     type="submit"
                     value="Зарегистрировать">
           </div>
-          </form>
+        </form>{% endcomment %}
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <div class="form-group">
+            <input
+                    class="btn btn-primary"
+                    type="submit"
+                    value="Зарегистрировать">
+          </div>
+        </form>
     </main>
 {% endblock %}

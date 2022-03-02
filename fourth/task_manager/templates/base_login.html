@@ -30,6 +30,7 @@
       <main role="main" class="inner cover">
         {% if msg %}
           <h5>{% translate msg %}</h5>
+          <a href="{% url 'register' %}">Регистрация</a>
         {% endif %}
         <h1 class="my-4 text-center">{% translate "Вход" %}</h1>
         <form method="post">
