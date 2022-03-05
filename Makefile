@@ -33,7 +33,7 @@ shell:
 	@poetry run python manage.py shell
 
 test:
-	poetry run pytest -vv fourth tests
+	poetry run python -Wa manage.py test
 
 bash_heroku:
 	@heroku run bash
