@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+  {% block main %}
+  <main role="main" class="inner cover">
+    <h2 class="cover-heading">
+      {% translate "4-й проект курса 'Python-разработчик'" %}
+    </h2>
+    <p class="lead">
+      {% translate "Нужно разработать приложение типа 'менеджер задач'." %}
+    </p>
+    <ul class="lead">
+      {% translate "В проекте используется:" %}
+      <li>"Django"</li>
+      <li>"Django-bootstrap 4"</li>
+      <li>"PostgreSQL"</li>
+    </ul>
+  </main>
+{% endblock %}

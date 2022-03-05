@@ -1,20 +1,20 @@
-import os
-from django.views.generic.edit import CreateView
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.shortcuts import redirect, render
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic.base import TemplateView
-
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-
-# class User():
-#     pass
+from fourth.task_manager.forms import CreateUserForm
 
 
 class IndexView(TemplateView):
-    template_name = 'base.html'
+    template_name = 'base_index.html'
 
 
 class UsersView(ListView):
@@ -22,80 +22,58 @@ class UsersView(ListView):
     template_name = 'base_users.html'
     context_object_name = 'users'
 
-    def get_context_data(self, **kwargs):
-        context = super(UsersView, self).get_context_data(**kwargs)
-        context['active'] = 'active'
-        return context
 
-
-class RegisterView(CreateView):
-    template_name = 'base_register.html'
-    model = User
-    fields = ['username', 'first_name', 'last_name', 'password']
+class CreateUserView(CreateView):
+    template_name = 'base_create.html'
     success_url = reverse_lazy('login')
-
-    def get_context_data(self, **kwargs):
-        context = super(RegisterView, self).get_context_data(**kwargs)
-        context['active'] = 'active'
-        context['msg'] = 'Такой пользователь уже есть'
-        return context
+    form_class = CreateUserForm
 
 
-class LoginView(TemplateView):
+class LoginUserView(LoginView):
     template_name = 'base_login.html'
-
-    def get(self, request, *args, **kwargs):
-        return render(
-            request,
-            self.template_name,
-            context={
-                'active': 'active'
-            }
-        )
-
-    def post(self, request, *args, **kwargs):
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect("/")
-        else:
-            msg = "Неверные логин или пароль"
-            return render(request, self.template_name, context={
-                'msg': msg,
-                'active': 'active'
-            })
+    next_page = reverse_lazy('index')
 
 
-class LogoutView(TemplateView):
-    def get(self, request, *args, **kwargs):
+class LogoutUserView(LogoutView):
+    def dispatch(self, request, *args, **kwargs):
         logout(request)
-        return redirect("/")
+        return redirect('index')
 
 
-class UpdateView(TemplateView):
-    template_name = 'update.html'
+class UpdateUserView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    SuccessMessageMixin,
+    UpdateView
+):
+    model = User
+    success_url = reverse_lazy('login')
+    template_name = 'base_update.html'
+    form_class = CreateUserForm
+    success_message = _('Пользователь изменен')
+    redirect_field_name = None
+
+    def test_func(self):
+        return self.request.user.pk == self.get_object().pk
+
+    def handle_no_permission(self):
+        return redirect('users')
 
 
-class DeleteView(TemplateView):
+class DeleteUserView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    SuccessMessageMixin,
+    DeleteView
+):
     template_name = 'base_delete.html'
+    model = User
+    success_url = reverse_lazy('users')
+    login_url = reverse_lazy('login')
+    redirect_field_name = None
 
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, context={
-            'user': User.objects.get(),
-        })
+    def test_func(self):
+        return self.request.user.pk == self.get_object().pk
 
-    def post(self, request, *args, **kwargs):
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect("/")
-        else:
-            msg = "Неверные логин или пароль"
-            return render(request, self.template_name, context={
-                'msg': msg,
-                'active': 'active'
-            })
+    def handle_no_permission(self):
+        return redirect('users')

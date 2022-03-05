@@ -6,20 +6,14 @@
 {% bootstrap_javascript jquery='full' %}
 {% load static %}
 
-{% block nav_login %}
-    <a class="nav-link active" href="{% url 'login' %}">
-        {% translate "Вход" %}
-    </a>
-{% endblock %}
-
 {% block main %}
       <main role="main" class="inner cover">
-        <h2 class="my-1 text-center">{% translate "Вход" %}</h2>
+        <h2 class="my-1 text-center">{% translate "Редактирование данных" %}</h2>
         <form method="post">
         {% csrf_token %}
             {% bootstrap_form form %}
             <div class="form-group">
-                <input class="btn btn-primary" type="submit" value="Войти">
+                <input class="btn btn-primary" type="submit" value="Изменить">
             </div>
         </form>
       </main>

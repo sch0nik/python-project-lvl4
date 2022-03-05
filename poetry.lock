@@ -104,6 +104,14 @@ beautifulsoup4 = ">=4.8.0"
 Django = ">=2.2"
 
 [[package]]
+name = "django-crispy-forms"
+version = "1.14.0"
+description = "Best way to have Django DRY forms"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "flake8"
 version = "4.0.1"
 description = "the modular source code checker: pep8 pyflakes and co"
@@ -290,7 +298,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "5ef577dee17e2a4a46a5c87e671431da7b6a5080393b53cafdf4f6fb58f9c84b"
+content-hash = "82bfa81db31ab105bed2f4efc08a8dde852344b2d2da661de6818a10720e56e3"
 
 [metadata.files]
 asgiref = [
@@ -342,6 +350,10 @@ django = [
 django-bootstrap4 = [
     {file = "django-bootstrap4-21.2.tar.gz", hash = "sha256:0b9eeafecd132c0e6af8688493816fc2ae172d2eb3d98e66dc5eb48757da65df"},
     {file = "django_bootstrap4-21.2-py3-none-any.whl", hash = "sha256:46f9ea3789bc1a2fa5db94b9439e2a755cca582af06af0c6cfc76d70b6e5702c"},
+]
+django-crispy-forms = [
+    {file = "django-crispy-forms-1.14.0.tar.gz", hash = "sha256:35887b8851a931374dd697207a8f56c57a9c5cb9dbf0b9fa54314da5666cea5b"},
+    {file = "django_crispy_forms-1.14.0-py3-none-any.whl", hash = "sha256:bc4d2037f6de602d39c0bc452ac3029d1f5d65e88458872cc4dbc01c3a400604"},
 ]
 flake8 = [
     {file = "flake8-4.0.1-py2.py3-none-any.whl", hash = "sha256:479b1304f72536a55948cb40a32dce8bb0ffe3501e26eaf292c7e60eb5e0428d"},

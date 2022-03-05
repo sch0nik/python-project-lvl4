@@ -1,4 +1,4 @@
-{{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
 {% load bootstrap4 %}
@@ -7,12 +7,12 @@
 {% load static %}
 
 {% block main %}
-    <main role="main" class="inner cover">
-      <h1>{% translate "Удаление пользователя" %}</h1>
-      <p>{% translate "Вы уверены, что хотите удалить " %}{{ user }}?</p>
-      <form method="post">
-          {% csrf_token %}
-          <input class="btn btn-danger" type="submit" value="Да, удалить">
-      </form>
-    </main>
+    <h2 class="my-1">{% translate "Удаление пользователя" %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>{% translate "Вы уверены, что хотите удалить" %} {{ user.get_full_name }}?</p>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="{% translate 'Удалить' %}">
+        </div>
+    </form>
 {% endblock %}

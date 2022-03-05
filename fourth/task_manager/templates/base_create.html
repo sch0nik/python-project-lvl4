@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+{% block nav_reg %}
+    <a class="nav-link active" href="{% url 'create' %}">
+      {% translate "Регистрация" %}
+    </a>
+{% endblock %}
+
+{% block main %}
+    <main role="main" class="inner cover">
+        <h2 class="my-1 text-center">{% translate "Регистрация" %}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <div class="form-group">
+                <input
+                        class="btn btn-primary"
+                        type="submit"
+                        value="{% translate 'Зарегистрировать' %}">
+            </div>
+        </form>
+    </main>
+{% endblock %}

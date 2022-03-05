@@ -33,49 +33,43 @@
   </head>
   <body class="text-left">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-5">
+      <header class="masthead mb-4">
         <div class="inner">
           <h3 class="masthead-brand">
             <a href="{% url 'index' %}">
               <p class="text-center">{% translate "Менеджер задач" %}</p>
             </a>
           </h3>
-          {% block nav %}
           <nav class="nav nav-masthead justify-content-center">
-            {% if user.username %}
+            {% if user.is_authenticated %}
               <a class="nav-link" href="{% url 'logout' %}">
                 {% translate "Выход" %}
               </a>
             {% else %}
+
+              {% block nav_login %}
               <a class="nav-link" href="{% url 'login' %}">
                 {% translate "Вход" %}
               </a>
-              <a class="nav-link" href="{% url 'register' %}">
+              {% endblock %}
+
+              {% block nav_reg %}
+              <a class="nav-link" href="{% url 'create' %}">
                 {% translate "Регистрация" %}
               </a>
+              {% endblock %}
+
             {% endif %}
+
+            {% block nav_users %}
             <a class="nav-link" href="{% url 'users' %}">
               {% translate "Пользователи" %}
             </a>
+            {% endblock %}
           </nav>
-          {% endblock %}
         </div>
       </header>
       {% block main %}
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">
-          {% translate "4-й проект курса 'Python-разработчик'" %}
-        </h1>
-        <p class="lead">
-          {% translate "Нужно разработать приложение типа 'менеджер задач'." %}
-        </p>
-        <ul class="lead">
-          {% translate "В проекте используется:" %}
-          <li>"Django"</li>
-          <li>"Django-bootstrap 4"</li>
-          <li>"PostgreSQL"</li>
-        </ul>
-      </main>
       {% endblock %}
       <footer class="mastfoot mt-auto text-left">
         <div class="container my-5 pt-4 border-top">
