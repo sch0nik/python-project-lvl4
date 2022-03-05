@@ -27,9 +27,6 @@ dj-database-url==0.5.0 \
 django-bootstrap4==21.2; python_version >= "3.7" \
     --hash=sha256:0b9eeafecd132c0e6af8688493816fc2ae172d2eb3d98e66dc5eb48757da65df \
     --hash=sha256:46f9ea3789bc1a2fa5db94b9439e2a755cca582af06af0c6cfc76d70b6e5702c
-django-crispy-forms==1.14.0; python_version >= "3.7" \
-    --hash=sha256:35887b8851a931374dd697207a8f56c57a9c5cb9dbf0b9fa54314da5666cea5b \
-    --hash=sha256:bc4d2037f6de602d39c0bc452ac3029d1f5d65e88458872cc4dbc01c3a400604
 django==4.0.2; python_version >= "3.8" \
     --hash=sha256:996495c58bff749232426c88726d8cd38d24c94d7c1d80835aafffa9bc52985a \
     --hash=sha256:110fb58fb12eca59e072ad59fc42d771cd642dd7a2f2416582aa9da7a8ef954a
