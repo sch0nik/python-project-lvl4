@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
@@ -23,15 +24,18 @@ class UsersView(ListView):
     context_object_name = 'users'
 
 
-class CreateUserView(CreateView):
+class CreateUserView(CreateView, SuccessMessageMixin):
     template_name = 'base_create.html'
     success_url = reverse_lazy('login')
     form_class = CreateUserForm
+    success_message = _('Пользователь создан')
 
 
-class LoginUserView(LoginView):
+class LoginUserView(LoginView, SuccessMessageMixin):
     template_name = 'base_login.html'
     next_page = reverse_lazy('index')
+    success_message = _('Вы залогинены')
+    success_url = reverse_lazy('index')
 
 
 class LogoutUserView(LogoutView):
@@ -57,6 +61,8 @@ class UpdateUserView(
         return self.request.user.pk == self.get_object().pk
 
     def handle_no_permission(self):
+        messages.error(self.request,
+                       _('У вас нет возможности менять другого пользователя.'))
         return redirect('users')
 
 
@@ -71,9 +77,13 @@ class DeleteUserView(
     success_url = reverse_lazy('users')
     login_url = reverse_lazy('login')
     redirect_field_name = None
+    success_message = _('Пользователь удален')
 
     def test_func(self):
         return self.request.user.pk == self.get_object().pk
 
     def handle_no_permission(self):
+        messages.error(
+            self.request,
+            _('У вас нет возможности удалять другого пользователя.'))
         return redirect('users')
