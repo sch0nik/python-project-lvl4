@@ -25,7 +25,6 @@ INSTALLED_APPS = [
     'fourth',
     'fourth.task_manager',
     'bootstrap4',
-    'crispy_forms',
 ]
 
 MIDDLEWARE = [
