@@ -1,7 +1,6 @@
 from django import forms
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
 
@@ -13,8 +12,8 @@ class CreateUserForm(UserCreationForm):
             'Ваш пароль должен содержать как минимум 3 символа.',
         )
 
-    first_name = forms.CharField(label=_('Имя'))
-    last_name = forms.CharField(label=_('Фамилия'))
+    first_name = forms.CharField(label=_('Имя'), max_length=150)
+    last_name = forms.CharField(label=_('Фамилия'), max_length=150)
 
     class Meta:
         model = User
