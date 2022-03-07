@@ -1,0 +1,17 @@
+{% extends "base/base_create.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+{% block nav_reg %}
+    <a class="nav-link active" href="{% url 'create' %}">
+      {% translate "Регистрация" %}
+    </a>
+{% endblock %}
+
+{% block title %}{% translate "Регистрация" %}{% endblock %}
+
+{% block button_name %}"{% translate 'Зарегистрировать' %}"{% endblock %}

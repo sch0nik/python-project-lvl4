@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base_list.html" %}
 
 {% load i18n %}
 {% load bootstrap4 %}
@@ -12,9 +12,11 @@
     </a>
 {% endblock %}
 
-{% block main %}
-<main role="main" class="inner cover">
+{% block title %}
     <h2 class="my-1 text-center">{% translate "Пользователи" %}</h2>
+{% endblock %}
+
+{% block table %}
     {% if users %}
         <table class="table table-striped text-light">
         <thead class="thead-dark text-center">
@@ -54,5 +56,4 @@
     {% else %}
      <p>{% translate "Нет пользователей" %}</p>
     {% endif %}
-</main>
 {% endblock %}

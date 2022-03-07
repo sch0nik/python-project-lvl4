@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
+from fourth.task_manager.models import StatusTask
+
 
 class CreateUserForm(UserCreationForm):
 
@@ -22,3 +24,11 @@ class CreateUserForm(UserCreationForm):
             'last_name',
             'username',
         )
+
+
+class CreateStatusForm(forms.ModelForm):
+    name = forms.CharField(label=_('Имя'), max_length=100)
+
+    class Meta:
+        model = StatusTask
+        fields = ('name',)

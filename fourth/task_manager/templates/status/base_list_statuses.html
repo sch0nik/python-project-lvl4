@@ -1,0 +1,55 @@
+{% extends "base/base_list.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+{% block nav_statuses %}
+    <a class="nav-link active" href="{% url 'statuses' %}">
+        {% translate "Статусы" %}
+    </a>
+{% endblock %}
+
+
+{% block title %}
+    <h2 class="my-1 text-center">{% translate "Статусы задач" %}</h2>
+    <a href="{% url 'create_status' %}">Создать статус</a>
+{% endblock %}
+
+{% block table %}
+    {% if statuses %}
+        <table class="table table-striped text-light">
+        <thead class="thead-dark text-center">
+            <th>ID</th>
+            <th>{% translate "Имя" %}</th>
+            <th>{% translate "Дата создания" %}</th>
+            <th></th>
+        </thead>
+        <tbody class="text-left">
+        {% for status in statuses %}
+            <tr>
+                <td>{{ status.id }}</td>
+                <td>{{ status.name }}</td>
+                <td>{{ status.created_at }}</td>
+                <td class="text-center">
+                    <form action="{% url 'update_status' status.id %}">
+                        <button class="btn-primary">
+                            {% translate "Изменить" %}
+                        </button>
+                    </form>
+                    <form action="{% url 'delete_status' status.id %}">
+                        <button class="btn-primary">
+                            {% translate "Удалить" %}
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% else %}
+     <p>{% translate "Нет статусов" %}</p>
+    {% endif %}
+{% endblock %}

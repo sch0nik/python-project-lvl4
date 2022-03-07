@@ -6,15 +6,9 @@
 {% bootstrap_javascript jquery='full' %}
 {% load static %}
 
-{% block nav_reg %}
-    <a class="nav-link active" href="{% url 'create' %}">
-      {% translate "Регистрация" %}
-    </a>
-{% endblock %}
-
 {% block main %}
     <main role="main" class="inner cover">
-        <h2 class="my-1 text-center">{% translate "Регистрация" %}</h2>
+        <h2 class="my-1 text-center">{% block title %}{% endblock %}</h2>
         <form method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
@@ -22,7 +16,7 @@
                 <input
                         class="btn btn-primary"
                         type="submit"
-                        value="{% translate 'Зарегистрировать' %}">
+                        value={% block button_name %}{% endblock %}>
             </div>
         </form>
     </main>

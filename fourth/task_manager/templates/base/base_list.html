@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+{% block main %}
+<main role="main" class="inner cover">
+    {% block title %}{% endblock %}
+    {% block table %}{% endblock %}
+</main>
+{% endblock %}

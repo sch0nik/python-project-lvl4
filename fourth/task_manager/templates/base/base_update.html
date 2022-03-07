@@ -8,7 +8,7 @@
 
 {% block main %}
       <main role="main" class="inner cover">
-        <h2 class="my-1 text-center">{% translate "Редактирование данных" %}</h2>
+        <h2 class="my-1 text-center">{% block title %}{% endblock %}</h2>
         <form method="post">
         {% csrf_token %}
             {% bootstrap_form form %}

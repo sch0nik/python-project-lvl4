@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.test import Client, TestCase
 
 
+# TODO: CRUD юзеров
 class TestRout(TestCase):
     test_username = 'username'
     test_first_name = 'first_name'
@@ -69,3 +70,6 @@ class TestRout(TestCase):
 
     def test_user_delete_post(self):
         pass
+
+# TODO: CRUD статусов
+

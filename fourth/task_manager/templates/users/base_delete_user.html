@@ -1,0 +1,13 @@
+{% extends "base/base_delete.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+{% block title %}{% translate "Удаление пользователя" %}{% endblock %}
+
+{% block phrase %}
+    {% translate "Вы уверены, что хотите удалить" %} {{ user.get_full_name }}?
+{% endblock %}

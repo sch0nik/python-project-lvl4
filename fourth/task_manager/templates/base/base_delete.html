@@ -7,10 +7,11 @@
 {% load static %}
 
 {% block main %}
-    <h2 class="my-1">{% translate "Удаление пользователя" %}</h2>
+    <h2 class="my-1">{% block title %}{% endblock %}</h2>
     <form method="post">
         {% csrf_token %}
-        <p>{% translate "Вы уверены, что хотите удалить" %} {{ user.get_full_name }}?</p>
+
+        <p>{% block phrase %}{% endblock %}</p>
         <div class="form-group">
             <input class="btn btn-primary" type="submit" value="{% translate 'Удалить' %}">
         </div>

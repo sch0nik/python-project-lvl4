@@ -41,17 +41,21 @@
             </a>
           </h3>
           <nav class="nav nav-masthead justify-content-center">
+            {% block nav_users %}
+            <a class="nav-link" href="{% url 'users' %}">
+              {% translate "Пользователи" %}
+            </a>
+            {% endblock %}
             {% if user.is_authenticated %}
+              {% block nav_statuses %}
+              <a class="nav-link" href="{% url 'statuses' %}">
+                  {% translate "Статусы" %}
+              </a>
+              {% endblock %}
               <a class="nav-link" href="{% url 'logout' %}">
                 {% translate "Выход" %}
               </a>
             {% else %}
-
-              {% block nav_login %}
-              <a class="nav-link" href="{% url 'login' %}">
-                {% translate "Вход" %}
-              </a>
-              {% endblock %}
 
               {% block nav_reg %}
               <a class="nav-link" href="{% url 'create' %}">
@@ -59,13 +63,13 @@
               </a>
               {% endblock %}
 
-            {% endif %}
+              {% block nav_login %}
+              <a class="nav-link" href="{% url 'login' %}">
+                {% translate "Вход" %}
+              </a>
+              {% endblock %}
 
-            {% block nav_users %}
-            <a class="nav-link" href="{% url 'users' %}">
-              {% translate "Пользователи" %}
-            </a>
-            {% endblock %}
+            {% endif %}
           </nav>
         </div>
       </header>
