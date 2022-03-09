@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
-from fourth.task_manager.models import StatusTask
+from fourth.task_manager.models import StatusTask, Task
 
 
 class CreateUserForm(UserCreationForm):
@@ -13,9 +13,6 @@ class CreateUserForm(UserCreationForm):
         self.fields['password1'].help_text = _(
             'Ваш пароль должен содержать как минимум 3 символа.',
         )
-
-    first_name = forms.CharField(label=_('Имя'), max_length=150)
-    last_name = forms.CharField(label=_('Фамилия'), max_length=150)
 
     class Meta:
         model = User
@@ -27,8 +24,21 @@ class CreateUserForm(UserCreationForm):
 
 
 class CreateStatusForm(forms.ModelForm):
-    name = forms.CharField(label=_('Имя'), max_length=100)
-
     class Meta:
         model = StatusTask
         fields = ('name',)
+
+
+class CreateTaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = (
+            'name',
+            'description',
+            'executor',
+            'status',
+            )
+        labels = {
+            'executor':  _('Испольнитель'),
+            'status':  _('Статус'),
+        }

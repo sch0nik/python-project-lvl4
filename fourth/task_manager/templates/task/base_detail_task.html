@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+{% block main %}
+ <main role="main" class="inner cover">
+   <h2 class="my-1 text-center">Просмотр задачи</h2>
+   <div class="card bg-transparent border-light">
+     <div class="card-header bg-dark border-light">
+         <h5>{{ object.name }}</h5>
+     </div>
+     <div class="card-body">
+       <p>{{ object.description }}</p>
+       <hr class="border-light">
+       <div class="container">
+          <div class="row p-1">
+            <div class="col">Автор</div>
+            <div class="col">{{ object.autor }}</div>
+          </div>
+          <div class="row p-1">
+            <div class="col">Испольнитель</div>
+            <div class="col">{{ object.executor }}</div>
+          </div>
+          <div class="row p-1">
+            <div class="col">Статус</div>
+            <div class="col">{{ object.status }}</div>
+          </div>
+          <div class="row p-1">
+            <div class="col">Дата создания</div>
+            <div class="col">{{ object.created_at }}</div>
+          </div>
+           <hr class="border-light">
+          <div class="row p-1 text-center">
+            <div class="col">
+              <form action="{% url 'update_task' task.pk %}">
+               <button class="btn-primary">
+                 {% translate "Изменить" %}
+               </button>
+              </form>
+            </div>
+            <div class="col">
+            <form action="{% url 'delete_task' task.pk %}">
+               <button class="btn-primary">
+                 {% translate "Удалить" %}
+               </button>
+             </form>
+            </div>
+          </div>
+       </div>
+     </div>
+   </div>
+</main>
+{% endblock %}
+

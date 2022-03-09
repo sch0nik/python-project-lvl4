@@ -20,10 +20,10 @@ urlpatterns = [
     path('statuses/<int:pk>/delete', views.DeleteStatusView.as_view(), name='delete_status'),
 
     # Task
-    path('task/', views.TaskListView.as_view(), name='task_list'),
-    path('task/create', views.CreateTaskView.as_view(), name='create_task'),
-    path('task/<int:pk>/update', views.UpdateTaskView.as_view(), name='update_task'),
-    path('task/<int:pk>/delete', views.DeleteTaskView.as_view(), name='delete_task'),
-    path('task/<int:pk>/', views.TaskView.as_view(), name='task'),
+    path('tasks/', views.TaskListView.as_view(), name='tasks'),
+    path('tasks/create', views.CreateTaskView.as_view(), name='create_task'),
+    path('tasks/<int:pk>/update', views.UpdateTaskView.as_view(), name='update_task'),
+    path('tasks/<int:pk>/delete', views.DeleteTaskView.as_view(), name='delete_task'),
+    path('tasks/<int:pk>/', views.TaskView.as_view(), name='task'),
 
 ]

@@ -32,7 +32,7 @@
     <link href="{% static 'cover.css' %}" rel="stylesheet">
   </head>
   <body class="text-left">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div class="cover-container d-flex w-120 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-4">
         <div class="inner">
           <h3 class="masthead-brand">
@@ -50,6 +50,11 @@
               {% block nav_statuses %}
               <a class="nav-link" href="{% url 'statuses' %}">
                   {% translate "Статусы" %}
+              </a>
+              {% endblock %}
+              {% block nav_task %}
+              <a class="nav-link" href="{% url 'tasks' %}">
+                  {% translate "Задачи" %}
               </a>
               {% endblock %}
               <a class="nav-link" href="{% url 'logout' %}">

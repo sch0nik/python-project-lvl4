@@ -1,0 +1,68 @@
+{% extends "base/base_list.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+{% block nav_task %}
+    <a class="nav-link active" href="{% url 'tasks' %}">
+      {% translate "Задачи" %}
+    </a>
+{% endblock %}
+
+{% block title %}
+    <h2 class="my-1 text-center">{% translate "Задачи" %}</h2>
+    <form action="{% url 'create_task' %}">
+        <button class="btn-primary">
+            {% translate "Создать задачу" %}
+        </button>
+    </form>
+{% endblock %}
+
+{% block table %}
+    {% if tasks_list %}
+        <table class="table table-striped text-light">
+        <thead class="thead-dark text-center">
+            <th>ID</th>
+            <th>{% translate "Имя" %}</th>
+            <th>{% translate "Статус" %}</th>
+            <th>{% translate "Автор" %}</th>
+            <th>{% translate "Исполнитель" %}</th>
+            <th>{% translate "Дата создания" %}</th>
+            <th></th>
+        </thead>
+        <tbody class="text-left">
+        {% for task in tasks_list %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>
+                    <a class="text-info" href="{% url 'task' task.pk %}">
+                        {{ task.name }}
+                    </a>
+                </td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.autor }}</td>
+                <td>{{ task.executor }}</td>
+                <td>{{ task.created_at }}</td>
+                <td>
+                    <form action="{% url 'update_task' task.pk %}">
+                        <button class="btn-primary">
+                            {% translate "Изменить" %}
+                        </button>
+                    </form>
+                    <form action="{% url 'delete_task' task.pk %}">
+                        <button class="btn-primary">
+                            {% translate "Удалить" %}
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% else %}
+     <p>{% translate "Нет задач" %}</p>
+    {% endif %}
+{% endblock %}
