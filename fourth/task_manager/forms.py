@@ -37,8 +37,8 @@ class CreateTaskForm(forms.ModelForm):
             'description',
             'executor',
             'status',
-            )
+        )
         labels = {
-            'executor':  _('Испольнитель'),
-            'status':  _('Статус'),
+            'executor': _('Испольнитель'),
+            'status': _('Статус'),
         }
