@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'fourth',
     'fourth.task_manager',
     'bootstrap4',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
