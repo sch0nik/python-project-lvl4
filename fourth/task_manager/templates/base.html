@@ -52,6 +52,11 @@
                   {% translate "Статусы" %}
               </a>
               {% endblock %}
+              {% block nav_label %}
+              <a class="nav-link" href="{% url 'labels' %}">
+                  {% translate "Метки" %}
+              </a>
+              {% endblock %}
               {% block nav_task %}
               <a class="nav-link" href="{% url 'tasks' %}">
                   {% translate "Задачи" %}

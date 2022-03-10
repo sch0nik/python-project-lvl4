@@ -1,0 +1,55 @@
+{% extends "base/base_list.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+{% block nav_label %}
+    <a class="nav-link active" href="{% url 'labels' %}">
+        {% translate "Метки" %}
+    </a>
+{% endblock %}
+
+
+{% block title %}
+    <h2 class="my-1 text-center">{% translate "Метки" %}</h2>
+    <a href="{% url 'create_label' %}">{% translate "Создать метку" %}</a>
+{% endblock %}
+
+{% block table %}
+    {% if labels %}
+        <table class="table table-striped text-light">
+        <thead class="thead-dark text-center">
+            <th>ID</th>
+            <th>{% translate "Имя" %}</th>
+            <th>{% translate "Дата создания" %}</th>
+            <th></th>
+        </thead>
+        <tbody class="text-left">
+        {% for label in labels %}
+            <tr>
+                <td>{{ label.id }}</td>
+                <td>{{ label.name }}</td>
+                <td>{{ label.created_at }}</td>
+                <td class="text-center">
+                    <form action="{% url 'update_label' label.id %}">
+                        <button class="btn-primary">
+                            {% translate "Изменить" %}
+                        </button>
+                    </form>
+                    <form action="{% url 'delete_label' label.id %}">
+                        <button class="btn-primary">
+                            {% translate "Удалить" %}
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% else %}
+     <p>{% translate "Нет меток" %}</p>
+    {% endif %}
+{% endblock %}
