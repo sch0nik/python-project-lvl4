@@ -32,7 +32,7 @@
     <link href="{% static 'cover.css' %}" rel="stylesheet">
   </head>
   <body class="text-left">
-    <div class="cover-container d-flex w-120 h-100 p-3 mx-auto flex-column">
+    <div class="cover-container d-flex w-220 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-4">
         <div class="inner">
           <h3 class="masthead-brand">
@@ -41,6 +41,8 @@
             </a>
           </h3>
           <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="#"></a>
+            <a class="nav-link" href="#"></a>
             {% block nav_users %}
             <a class="nav-link" href="{% url 'users' %}">
               {% translate "Пользователи" %}
@@ -66,19 +68,16 @@
                 {% translate "Выход" %}
               </a>
             {% else %}
-
               {% block nav_reg %}
               <a class="nav-link" href="{% url 'create' %}">
                 {% translate "Регистрация" %}
               </a>
               {% endblock %}
-
               {% block nav_login %}
               <a class="nav-link" href="{% url 'login' %}">
                 {% translate "Вход" %}
               </a>
               {% endblock %}
-
             {% endif %}
           </nav>
         </div>
@@ -89,7 +88,7 @@
       <footer class="mastfoot mt-auto text-left">
         <div class="container my-5 pt-4 border-top">
             <p>
-              <a href="https://github.com/sch0nik/python-project-lvl4">
+              <a class="bg-dark text-info" href="https://github.com/sch0nik/python-project-lvl4">
                 {% translate "Репозиторий проекта." %}
               </a>
             </p>
