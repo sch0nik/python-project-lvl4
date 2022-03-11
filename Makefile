@@ -30,10 +30,10 @@ migrate:
 	poetry run python manage.py migrate
 
 shell:
-	@poetry run python manage.py shell
+	poetry run python manage.py shell
 
 test:
-	@poetry run python -Wa manage.py test fourth/task_manager/tests/
+	poetry run python -Wa manage.py test fourth/task_manager/tests/
 
 bash_heroku:
-	@heroku run bash
+	heroku run bash
