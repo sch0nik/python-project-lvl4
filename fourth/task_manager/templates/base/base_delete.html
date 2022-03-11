@@ -11,7 +11,7 @@
     <form method="post">
         {% csrf_token %}
 
-        <p>{% block phrase %}{% endblock %}</p>
+        <p>{% translate "Вы уверены, что хотите удалить" %} '{{ object_del }}'?</p>
         <div class="form-group">
             <input class="btn btn-primary" type="submit" value="{% translate 'Удалить' %}">
         </div>

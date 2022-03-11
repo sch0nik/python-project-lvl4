@@ -1,7 +1,7 @@
 # TODO: текст флэш сообщения как в демонстрационном проекте
 from django.contrib import messages
 from django.contrib.auth import logout
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -10,8 +10,11 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView
 
+from fourth.task_manager.all_operations import OperationList, OperationDelete, \
+    OperationUpdate
+from fourth.task_manager.filters import TaskFilter
 from fourth.task_manager.forms import (
     CreateUserForm,
     CreateStatusForm,
@@ -51,70 +54,26 @@ class LogoutUserView(LogoutView):
         return redirect('index')
 
 
-class UpdateUserView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    UserPassesTestMixin,
-    UpdateView,
-):
+class UpdateUserView(OperationUpdate):
     model = User
-    login_url = reverse_lazy('login')
     template_name = 'users/base_update_user.html'
     form_class = CreateUserForm
     success_message = _('Пользователь изменен')
     redirect_field_name = reverse_lazy('login')
 
-    def test_func(self):
-        return self.request.user.pk == self.get_object().pk
 
-    def handle_no_permission(self):
-        messages.error(
-            self.request,
-            _('У вас нет прав для изменения другого пользователя')
-        )
-        return redirect('users')
-
-
-class DeleteUserView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    UserPassesTestMixin,
-    DeleteView
-):
-    template_name = 'users/base_delete_user.html'
+class DeleteUserView(OperationDelete):
     model = User
-    success_url = reverse_lazy('users')
-    login_url = reverse_lazy('login')
-    redirect_field_name = None
+    template_name = 'users/base_delete_user.html'
     success_message = _('Пользователь удален')
-
-    def test_func(self):
-        return self.request.user.pk == self.get_object().pk
-
-    def handle_no_permission(self):
-        messages.error(
-            self.request,
-            _('У вас нет прав для изменения другого пользователя'),
-        )
-        return redirect('users')
-
-    def form_valid(self, form):
-        if self.request.user.executor:
-            messages.error(
-                self.request,
-                _('Невозможно удалить пользователя, потому что он используется'),
-            )
-        return redirect('users')
+    success_url = reverse_lazy('users')
+    msg_error = _('Невозможно удалить пользователя, потому что он используется')
 
 
-class StatusesView(LoginRequiredMixin, ListView):
+class StatusesView(OperationList):
     template_name = 'status/base_list_status.html'
     queryset = StatusTask.objects.order_by('id')
     context_object_name = 'statuses'
-
-    def handle_no_permission(self):
-        messages.error(self.request, _('Вы не авторизованы'))
-        return redirect('login')
 
 
 class CreateStatusView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -124,63 +83,36 @@ class CreateStatusView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = _('Статус создан')
 
 
-class UpdateStatusView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    UserPassesTestMixin,
-    UpdateView,
-):
-    template_name = 'status/base_update_status.html'
+class UpdateStatusView(OperationUpdate):
     model = StatusTask
-    login_url = reverse_lazy('login')
+    template_name = 'status/base_update_status.html'
     form_class = CreateStatusForm
     success_message = _('Статус изменен')
     success_url = reverse_lazy('statuses')
     redirect_field_name = reverse_lazy('statuses')
 
-    def test_func(self):
-        return self.request.__dict__['resolver_match'].kwargs['pk'] == self.get_object().pk
 
-    def handle_no_permission(self):
-        messages.error(self.request, _('Вы не авторизованы'))
-        return redirect('login')
-
-
-class DeleteStatusView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    UserPassesTestMixin,
-    DeleteView
-):
-    template_name = 'status/base_delete_status.html'
+class DeleteStatusView(OperationDelete):
     model = StatusTask
+    template_name = 'status/base_delete_status.html'
     success_url = reverse_lazy('statuses')
-    login_url = reverse_lazy('login')
-    redirect_field_name = None
     success_message = _('Статус удален')
-
-    def get_context_data(self, **kwargs):
-        context = super(DeleteStatusView, self).get_context_data()
-        ind = self.request.__dict__['resolver_match'].kwargs['pk']
-        context['status'] = StatusTask.objects.get(id=ind)
-        return context
-
-    def test_func(self):
-        return self.request.__dict__['resolver_match'].kwargs['pk'] == self.get_object().pk
-
-    def handle_no_permission(self):
-        messages.error(self.request, _('Вы не авторизованы'))
-        return redirect('login')
+    msg_error = _('Невозможно удалить статус, потому что он используется')
 
 
-class TaskListView(LoginRequiredMixin, ListView):
+class TaskListView(OperationList):
+    model = Task
     template_name = 'task/base_list_task.html'
     queryset = Task.objects.order_by('id')
-    context_object_name = 'tasks_list'
+    context_object_name = 'task_list'
 
-    def handle_no_permission(self):
-        messages.error(self.request, _('Вы не авторизованы'))
-        return redirect('login')
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        qs = self.model.objects.all()
+        task_filter = TaskFilter(self.request.GET, queryset=qs)
+        context['filter'] = task_filter
+        context['task_list'] = task_filter.qs
+        return context
 
 
 class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -196,62 +128,27 @@ class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdateTaskView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    UserPassesTestMixin,
-    UpdateView,
-):
+class UpdateTaskView(OperationUpdate):
     template_name = 'task/base_update_task.html'
     model = Task
-    login_url = reverse_lazy('login')
     form_class = CreateTaskForm
     success_message = _('Задача изменена')
     success_url = reverse_lazy('tasks')
     redirect_field_name = reverse_lazy('tasks')
 
-    def test_func(self):
-        return self.request.__dict__['resolver_match'].kwargs['pk'] == self.get_object().pk
 
-    def handle_no_permission(self):
-        messages.error(self.request, _('Вы не авторизованы'))
-        return redirect('login')
-
-
-class DeleteTaskView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    UserPassesTestMixin,
-    DeleteView
-):
+class DeleteTaskView(OperationDelete):
     template_name = 'task/base_delete_task.html'
     model = Task
     success_url = reverse_lazy('tasks')
-    login_url = reverse_lazy('login')
-    redirect_field_name = None
     success_message = _('Задача удалена')
 
-    def get_context_data(self, **kwargs):
-        context = super(DeleteTaskView, self).get_context_data()
-        ind = self.request.__dict__['resolver_match'].kwargs['pk']
-        context['task'] = Task.objects.get(id=ind)
-        return context
-
-    def test_func(self):
-        return self.request.__dict__['resolver_match'].kwargs['pk'] == self.get_object().pk
-
-    def handle_no_permission(self):
-        messages.error(self.request, _('Вы не авторизованы'))
-        return redirect('login')
-
-    def get(self, request, *args, **kwargs):
-        pk = self.request.__dict__['resolver_match'].kwargs['pk']
-        autor = Task.objects.get(id=pk).autor
-        if autor == self.request.user:
-            return super(DeleteTaskView, self).post(self, request, *args, **kwargs)
-        else:
+    def form_valid(self, form):
+        if self.get_object().autor != self.request.user:
             messages.error(self.request, _('Задачу может удалить только её автор'))
-            return redirect('tasks')
+        else:
+            super(DeleteTaskView, self).form_valid(form)
+        return redirect(self.success_url)
 
 
 class TaskView(LoginRequiredMixin, SuccessMessageMixin, DetailView):
@@ -264,14 +161,10 @@ class TaskView(LoginRequiredMixin, SuccessMessageMixin, DetailView):
         return context
 
 
-class LabelsView(LoginRequiredMixin, ListView):
+class LabelsView(OperationList):
     template_name = 'label/base_list_label.html'
     queryset = Label.objects.order_by('id')
     context_object_name = 'labels'
-
-    def handle_no_permission(self):
-        messages.error(self.request, _('Вы не авторизованы'))
-        return redirect('login')
 
 
 class CreateLabelView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -281,59 +174,18 @@ class CreateLabelView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = _('Метка создана')
 
 
-class UpdateLabelView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    UserPassesTestMixin,
-    UpdateView,
-):
+class UpdateLabelView(OperationUpdate):
     template_name = 'label/base_update_label.html'
     model = Label
-    login_url = reverse_lazy('login')
     form_class = CreateLabelForm
     success_message = _('Метка изменена')
     success_url = reverse_lazy('labels')
     redirect_field_name = reverse_lazy('labels')
 
-    def test_func(self):
-        return self.request.__dict__['resolver_match'].kwargs['pk'] == self.get_object().pk
 
-    def handle_no_permission(self):
-        messages.error(self.request, _('Вы не авторизованы'))
-        return redirect('login')
-
-
-class DeleteLabelView(
-    LoginRequiredMixin,
-    SuccessMessageMixin,
-    UserPassesTestMixin,
-    DeleteView
-):
+class DeleteLabelView(OperationDelete):
     template_name = 'label/base_delete_label.html'
     model = Label
     success_url = reverse_lazy('labels')
-    login_url = reverse_lazy('login')
-    redirect_field_name = None
     success_message = _('Метка удалена')
-
-    def get_context_data(self, **kwargs):
-        context = super(DeleteLabelView, self).get_context_data()
-        ind = self.request.__dict__['resolver_match'].kwargs['pk']
-        context['label'] = Label.objects.get(id=ind)
-        return context
-
-    def test_func(self):
-        return self.request.__dict__['resolver_match'].kwargs['pk'] == self.get_object().pk
-
-    def handle_no_permission(self):
-        messages.error(self.request, _('Вы не авторизованы'))
-        return redirect('login')
-
-    def get(self, request, *args, **kwargs):
-        pk = self.request.__dict__['resolver_match'].kwargs['pk']
-        tasks = Label.objects.get(id=pk).tasks.all()
-        if tasks:
-            messages.error(self.request, _('Невозможно удалить метку, потому что она используется'))
-            return redirect('labels')
-        else:
-            return super(DeleteLabelView, self).post(self, request, *args, **kwargs)
+    msg_error = _('Невозможно удалить метку, потому что она используется')

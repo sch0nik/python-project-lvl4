@@ -25,21 +25,21 @@ class Task(models.Model):
     executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
-        related_name='executor',
+        related_name='task',
     )
     status = models.ForeignKey(
         StatusTask,
         on_delete=models.PROTECT,
-        related_name='status',
+        related_name='task',
     )
     created_at = models.DateTimeField(_('Дата создания'), auto_now_add=True)
     autor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
-        related_name='autor',
+        related_name='authorship',
     )
 
-    label = models.ManyToManyField(Label, blank=True, related_name='tasks')
+    label = models.ManyToManyField(Label, blank=True, related_name='task')
 
     def __str__(self):
         return self.name

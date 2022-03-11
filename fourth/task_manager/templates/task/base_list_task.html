@@ -19,10 +19,26 @@
             {% translate "Создать задачу" %}
         </button>
     </form>
+    <form method="get">
+        {% bootstrap_form filter.form %}
+        <button type="submit" class="btn btn-primary">
+          {% translate "Показать" %}
+        </button>
+    </form>
+    <br>
+    <form action="{% url 'tasks' %}">
+        <button type="submit" class="btn btn-primary">
+          {% translate "Сбросить" %}
+        </button>
+    </form>
+    <br>
 {% endblock %}
 
 {% block table %}
-    {% if tasks_list %}
+    {% for i, j in item.items %}
+        <p>{{i}}: {{j}}</p>
+    {% endfor %}
+    {% if task_list %}
         <table class="table table-striped text-light">
         <thead class="thead-dark text-center">
             <th>ID</th>
@@ -34,7 +50,7 @@
             <th></th>
         </thead>
         <tbody class="text-left">
-        {% for task in tasks_list %}
+        {% for task in task_list %}
             <tr>
                 <td>{{ task.id }}</td>
                 <td>
