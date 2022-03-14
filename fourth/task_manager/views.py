@@ -1,5 +1,6 @@
 # TODO: текст флэш сообщения как в демонстрационном проекте
 # TODO: страница 404
+# TODO: логирование
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin

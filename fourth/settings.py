@@ -1,8 +1,8 @@
-import os
-from os import getenv
+from os import getenv, path
 from pathlib import Path
 
 import dj_database_url
+import rollbar
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
@@ -37,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'fourth.urls'
@@ -82,12 +83,19 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'fourth/task_manager/static'),
+    path.join(BASE_DIR, 'fourth/task_manager/static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+ROLLBAR = {
+     'access_token': getenv('ROLLBAR_ACCES_TOKEN'),
+     'environment': 'development' if DEBUG else 'production',
+     'root': BASE_DIR,
+ }
+rollbar.init(**ROLLBAR)
