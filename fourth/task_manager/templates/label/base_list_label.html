@@ -33,17 +33,13 @@
                 <td>{{ label.id }}</td>
                 <td>{{ label.name }}</td>
                 <td>{{ label.created_at }}</td>
-                <td class="text-center">
-                    <form action="{% url 'update_label' label.id %}">
-                        <button class="btn-primary">
-                            {% translate "Изменить" %}
-                        </button>
-                    </form>
-                    <form action="{% url 'delete_label' label.id %}">
-                        <button class="btn-primary">
-                            {% translate "Удалить" %}
-                        </button>
-                    </form>
+                <td>
+                    <a class="btn btn-outline-primary" href="{% url 'update_label' label.id %}">
+                        {% translate "Изменить" %}
+                    </a>
+                    <a class="btn btn-outline-primary" href="{% url 'delete_label' label.id %}">
+                        {% translate "Удалить" %}
+                    </a>
                 </td>
             </tr>
         {% endfor %}

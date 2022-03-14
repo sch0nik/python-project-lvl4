@@ -82,13 +82,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'fourth/task_manager/static'),
 )
-# /home/sch_serega/my_python/fourth_project/python-project-lvl4/fourth/task_manager/static
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

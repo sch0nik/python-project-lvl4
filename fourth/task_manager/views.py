@@ -1,4 +1,5 @@
 # TODO: текст флэш сообщения как в демонстрационном проекте
+# TODO: страница 404
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -11,6 +12,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
+from django_filters.views import FilterView
 
 from fourth.task_manager.all_operations import OperationList, OperationDelete, \
     OperationUpdate
@@ -100,19 +102,11 @@ class DeleteStatusView(OperationDelete):
     msg_error = _('Невозможно удалить статус, потому что он используется')
 
 
-class TaskListView(OperationList):
+class TaskListView(LoginRequiredMixin, FilterView):
     model = Task
     template_name = 'task/base_list_task.html'
-    queryset = Task.objects.order_by('id')
     context_object_name = 'task_list'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        qs = self.model.objects.all()
-        task_filter = TaskFilter(self.request.GET, queryset=qs)
-        context['filter'] = task_filter
-        context['task_list'] = task_filter.qs
-        return context
+    filterset_class = TaskFilter
 
 
 class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, CreateView):

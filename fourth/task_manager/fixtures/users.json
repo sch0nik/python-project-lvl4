@@ -1,0 +1,22 @@
+[{
+      "password":"123",
+      "username":"user1",
+      "first_name":"Семен",
+      "last_name":"Слепаков",
+  },
+  {
+    "fields":{
+      "password":"123",
+      "username":"user2",
+      "first_name":"Филип",
+      "last_name":"Киркоров",
+    }
+  },
+  {
+    "fields":{
+      "password":"123",
+      "username":"user3",
+      "first_name":"Алла",
+      "last_name":"Пугачева",
+    }
+  }]

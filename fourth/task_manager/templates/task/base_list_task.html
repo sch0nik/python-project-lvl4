@@ -14,24 +14,20 @@
 
 {% block title %}
     <h2 class="my-1 text-center">{% translate "Задачи" %}</h2>
-    <form action="{% url 'create_task' %}">
-        <button class="btn-primary">
-            {% translate "Создать задачу" %}
-        </button>
-    </form>
+    <a class="btn btn-outline-primary" href="{% url 'create_task' %}">
+        {% translate "Создать задачу" %}
+    </a>
     <form method="get">
         {% bootstrap_form filter.form %}
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-outline-primary">
           {% translate "Показать" %}
         </button>
+        <a class="btn btn-outline-primary" href="{% url 'tasks' %}">
+        {% translate "Сбросить" %}
+        </a>
     </form>
     <br>
-    <form action="{% url 'tasks' %}">
-        <button type="submit" class="btn btn-primary">
-          {% translate "Сбросить" %}
-        </button>
-    </form>
-    <br>
+
 {% endblock %}
 
 {% block table %}
@@ -63,16 +59,12 @@
                 <td>{{ task.executor }}</td>
                 <td>{{ task.created_at }}</td>
                 <td>
-                    <form action="{% url 'update_task' task.pk %}">
-                        <button class="btn-primary">
-                            {% translate "Изменить" %}
-                        </button>
-                    </form>
-                    <form action="{% url 'delete_task' task.pk %}">
-                        <button class="btn-primary">
-                            {% translate "Удалить" %}
-                        </button>
-                    </form>
+                    <a class="btn btn-outline-primary" href="{% url 'update_task' task.pk %}">
+                        {% translate "Изменить" %}
+                    </a>
+                    <a class="btn btn-outline-primary" href="{% url 'delete_task' task.pk %}">
+                        {% translate "Удалить" %}
+                    </a>
                 </td>
             </tr>
         {% endfor %}
