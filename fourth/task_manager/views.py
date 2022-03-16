@@ -46,7 +46,7 @@ class CreateUserView(SuccessMessageMixin, CreateView):
 
 
 class LoginUserView(SuccessMessageMixin, LoginView):
-
+    model = User
     template_name = 'users/base_login_user.html'
     next_page = reverse_lazy('index')
     success_message = _('Вы залогинены')

@@ -1,5 +1,6 @@
-from django.contrib.auth.models import User
 from django.test import Client, TestCase
+
+from fourth.task_manager.models import User
 
 
 class TestCRUDUser(TestCase):
