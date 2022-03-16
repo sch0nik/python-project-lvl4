@@ -17,17 +17,24 @@
     <a class="btn btn-outline-primary" href="{% url 'create_task' %}">
         {% translate "Создать задачу" %}
     </a>
-    <form method="get">
-        {% bootstrap_form filter.form %}
-        <button type="submit" class="btn btn-outline-primary">
-          {% translate "Показать" %}
-        </button>
-        <a class="btn btn-outline-primary" href="{% url 'tasks' %}">
-        {% translate "Сбросить" %}
-        </a>
-    </form>
+    <div class="card bg-transparent border-0">
+    <div class="card-body ">
+        <form method="get" class="form-inline">
+            <div class="form-inline float-left">
+                {% bootstrap_form filter.form %}
+            </div>
+            <div class="my-2">
+                <button type="submit" class="btn btn-outline-primary mx-2">
+                    {% translate "Показать" %}
+                </button>
+                <a class="btn btn-outline-primary mx-2"
+                   href="{% url 'tasks' %}">
+                    {% translate "Сбросить" %}
+                </a></div>
+        </form>
+    </div>
+    </div>
     <br>
-
 {% endblock %}
 
 {% block table %}
@@ -55,8 +62,8 @@
                     </a>
                 </td>
                 <td>{{ task.status }}</td>
-                <td>{{ task.autor }}</td>
-                <td>{{ task.executor }}</td>
+                <td>{{ task.autor.get_full_name }}</td>
+                <td>{{ task.executor.get_full_name }}</td>
                 <td>{{ task.created_at }}</td>
                 <td>
                     <a class="btn btn-outline-primary" href="{% url 'update_task' task.pk %}">

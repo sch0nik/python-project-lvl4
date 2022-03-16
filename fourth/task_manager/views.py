@@ -4,7 +4,7 @@
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
@@ -24,7 +24,7 @@ from fourth.task_manager.forms import (
     CreateTaskForm,
     CreateLabelForm,
 )
-from fourth.task_manager.models import StatusTask, Task, Label
+from fourth.task_manager.models import StatusTask, Task, Label, User
 
 
 class IndexView(TemplateView):
@@ -38,6 +38,7 @@ class UsersView(ListView):
 
 
 class CreateUserView(SuccessMessageMixin, CreateView):
+    model = User
     template_name = 'users/base_create_user.html'
     success_url = reverse_lazy('login')
     form_class = CreateUserForm
@@ -45,6 +46,7 @@ class CreateUserView(SuccessMessageMixin, CreateView):
 
 
 class LoginUserView(SuccessMessageMixin, LoginView):
+
     template_name = 'users/base_login_user.html'
     next_page = reverse_lazy('index')
     success_message = _('Вы залогинены')

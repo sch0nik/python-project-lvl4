@@ -1,6 +1,12 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+
+class User(AbstractUser):
+
+    def __str__(self):
+        return self.get_full_name()
 
 
 class StatusTask(models.Model):
@@ -26,20 +32,28 @@ class Task(models.Model):
         User,
         on_delete=models.PROTECT,
         related_name='task',
+        verbose_name=_('Исполнитель'),
     )
     status = models.ForeignKey(
         StatusTask,
         on_delete=models.PROTECT,
         related_name='task',
+        verbose_name=_('Статус'),
     )
     created_at = models.DateTimeField(_('Дата создания'), auto_now_add=True)
     autor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
         related_name='authorship',
+        verbose_name=_('Автор'),
     )
 
-    label = models.ManyToManyField(Label, blank=True, related_name='task')
+    label = models.ManyToManyField(
+        Label,
+        blank=True,
+        related_name='task',
+        verbose_name=_('Метка'),
+    )
 
     def __str__(self):
         return self.name

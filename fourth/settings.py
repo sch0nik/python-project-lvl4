@@ -74,6 +74,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'task_manager.User'
+
 LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'Europe/Moscow'
@@ -94,7 +96,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 ROLLBAR = {
-     'access_token': getenv('ROLLBAR_ACCES_TOKEN'),
+     'access_token': getenv('ROLLBAR_ACCESS_TOKEN'),
      'environment': 'development' if DEBUG else 'production',
      'root': BASE_DIR,
  }

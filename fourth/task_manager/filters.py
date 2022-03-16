@@ -1,8 +1,9 @@
 import django_filters
 from django import forms
+# from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
-from fourth.task_manager.models import Task
+from fourth.task_manager.models import Task, StatusTask, Label, User
 
 
 class TaskFilter(django_filters.FilterSet):
@@ -12,16 +13,27 @@ class TaskFilter(django_filters.FilterSet):
         widget=forms.CheckboxInput,
     )
 
+    executor_filter = django_filters.ModelChoiceFilter(
+        label=_('Исполнитель'),
+        field_name='executor',
+        queryset=User.objects.all(),
+    )
+
+    label_filter = django_filters.ModelChoiceFilter(
+        label=_('Метка'),
+        field_name='label',
+        queryset=Label.objects.all(),
+    )
+
+    # TODO: поле executor должно быть представлено в виде full_name
     class Meta:
         model = Task
         fields = (
             'status',
-            'executor',
-            'label',
+            'executor_filter',
+            'label_filter',
             'my_task',
         )
 
     def my_task_filter(self, queryset, name, value):
-        if value:
-            return queryset & self.request.user.task.all()
-        return queryset
+        return queryset.filter(autor=self.request.user) if value else queryset
