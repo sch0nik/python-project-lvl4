@@ -8,8 +8,8 @@ dev_server:
 	poetry run python manage.py runserver
 
 unic_server:
-	export DJANGO_SETTINGS_MODULE=fourth.settings
-	gunicorn fourth.wsgi
+	export DJANGO_SETTINGS_MODULE=task_manager.settings
+	gunicorn task_manager.wsgi
 
 requiremets.txt:
 	poetry export -f requirements.txt --output requirements.txt
@@ -21,7 +21,7 @@ run_heroku:
 	heroku ps:scale web=1
 
 lint:
-	poetry run flake8 fourth
+	poetry run flake8 task_app,
 
 makemigrations:
 	poetry run python manage.py makemigrations
@@ -33,7 +33,7 @@ shell:
 	poetry run python manage.py shell
 
 test:
-	poetry run python manage.py test fourth/task_manager/tests/
+	poetry run python manage.py test task_app/tests/
 
 bash_heroku:
 	heroku run bash

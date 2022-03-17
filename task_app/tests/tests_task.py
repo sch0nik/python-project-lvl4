@@ -1,11 +1,28 @@
-from django.test import TestCase
+from django.test import TestCase, tag
 from django.urls import reverse
 
-from fourth.task_manager.models import Task, Label, StatusTask, User
+from task_app.models import Task, Label, StatusTask, User
 
 
 class TestTask(TestCase):
     fixtures = ['fixtures.json']
+    delete_task = None
+
+    @classmethod
+    def setUpTestData(cls):
+        user = User.objects.all()[0]
+        status = StatusTask.objects.all()[0]
+        label = Label.objects.all()[0]
+        task = Task()
+        task.name = 'delete_task'
+        task.description = 'text'
+        task.executor = user
+        task.autor = user
+        task.status = status
+        task.save()
+        task.label.set([label])
+        task.save()
+        cls.delete_task = task
 
     def test_create_task(self):
         self.assertTrue(self.client.login(username='user2', password='123'))
@@ -43,8 +60,9 @@ class TestTask(TestCase):
         self.assertTrue(Task.objects.get(pk=pk).name == 'update_task')
 
     def test_delete_task(self):
-        self.client.login(username='user2', password='123')
-        pk = Task.objects.get(pk=3).pk
+        user = self.delete_task.autor
+        self.client.login(username=user.username, password='123')
+        pk = self.delete_task.pk
 
         response = self.client.post(reverse('delete_task', args=[pk]))
         self.assertRedirects(response, reverse('tasks'))

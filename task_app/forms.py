@@ -1,9 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-# from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
-from fourth.task_manager.models import StatusTask, Task, Label, User
+from task_app.models import StatusTask, Task, Label, User
 
 
 class CreateUserForm(UserCreationForm):

@@ -11,16 +11,16 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
 from django_filters.views import FilterView
 
-from fourth.task_manager.all_operations import OperationList, OperationDelete, \
+from task_app.all_operations import OperationList, OperationDelete, \
     OperationUpdate
-from fourth.task_manager.filters import TaskFilter
-from fourth.task_manager.forms import (
+from task_app.filters import TaskFilter
+from task_app.forms import (
     CreateUserForm,
     CreateStatusForm,
     CreateTaskForm,
     CreateLabelForm,
 )
-from fourth.task_manager.models import StatusTask, Task, Label, User
+from task_app.models import StatusTask, Task, Label, User
 
 
 class IndexView(TemplateView):

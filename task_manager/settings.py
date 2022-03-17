@@ -8,9 +8,9 @@ load_dotenv(find_dotenv())
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = getenv('FOURTH_SECRET_KEY')
+SECRET_KEY = getenv('TASK_MANAGER_SECRET_KEY')
 
-DEBUG = getenv('FOURTH_SERVER_DEBUG')
+DEBUG = getenv('TASK_MANAGER_SERVER_DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -21,8 +21,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fourth',
-    'fourth.task_manager',
+    'task_manager',
+    'task_app',
     'bootstrap4',
     'django_filters',
 ]
@@ -39,7 +39,7 @@ MIDDLEWARE = [
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
-ROOT_URLCONF = 'fourth.urls'
+ROOT_URLCONF = 'task_manager.urls'
 
 TEMPLATES = [
     {
@@ -57,7 +57,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'fourth.wsgi.application'
+WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
 
@@ -73,7 +73,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'task_manager.User'
+AUTH_USER_MODEL = 'task_app.User'
 
 LANGUAGE_CODE = 'ru-ru'
 
@@ -86,7 +86,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
-    path.join(BASE_DIR, 'fourth/task_manager/static'),
+    path.join(BASE_DIR, 'task_app/static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

@@ -1,8 +1,7 @@
-from django.test import tag
 from django.test import TestCase
 from django.urls import reverse
 
-from fourth.task_manager.models import User, Task, StatusTask, Label
+from task_app.models import User, Task
 
 
 class TestFilters(TestCase):
@@ -52,10 +51,10 @@ class TestFilters(TestCase):
         response = self.client.get(
             reverse('tasks'),
             {
-                'autor': 'user2',
+                'executor': 'user2',
                 'status': pk_status,
             }
         )
-        queryset = Task.objects.all().filter(autor=pk_user).filter(status=pk_status)
+        queryset = Task.objects.filter(autor=pk_user).filter(status=pk_status)
         value = response.context['task_list']
         self.assertQuerysetEqual(queryset, value, ordered=False)
