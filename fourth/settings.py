@@ -109,7 +109,7 @@ LOGGING = {
 }
 
 ROLLBAR = {
-     'access_token': getenv('ROLLBAR_ACCESS_TOKEN'),
-     'environment': 'development' if DEBUG else 'production',
-     'root': BASE_DIR,
- }
+    'access_token': getenv('ROLLBAR_ACCESS_TOKEN'),
+    'environment': 'development' if DEBUG else 'production',
+    'root': BASE_DIR,
+}
