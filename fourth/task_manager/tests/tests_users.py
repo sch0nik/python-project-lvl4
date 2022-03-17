@@ -1,25 +1,26 @@
-from django.test import Client, TestCase
+from django.test import TestCase
+from django.urls import reverse
 
 from fourth.task_manager.models import User
 
 
-class TestCRUDUser(TestCase):
-    # fixtures = 'users.json'
+class TestUsers(TestCase):
+    fixtures = ['fixtures.json']
 
-    def setUp(self):
-        user = User.objects.create_user(username='user_semen', password='123')
-        user.first_name = 'Семен'
-        user.last_name = 'Слепаков'
-        user.save()
-
-        user = User.objects.create_user(username='user', password='123')
-        user.first_name = 'Юзер'
-        user.last_name = 'Юзеров'
+    @classmethod
+    def setUpTestData(cls):
+        user = User.objects.create_user('delete_user')
+        user.set_password('123')
+        user.first_name = 'Del'
+        user.last_name = 'Ete'
         user.save()
 
     def test_create_user(self):
+        response = self.client.get(reverse('create'))
+        self.assertTrue(response.status_code == 200)
+
         response = self.client.post(
-            '/users/create/',
+            reverse('create'),
             {
                 'username': 'test',
                 'first_name': 'john',
@@ -32,11 +33,15 @@ class TestCRUDUser(TestCase):
         self.assertTrue(User.objects.get(username='test'))
 
     def test_update_user(self):
-        user = User.objects.get(username='user_semen')
+        user = User.objects.get(username='user1')
         pk = user.pk
-        self.client.login(username='user_semen', password='123')
+
+        response = self.client.get(reverse('update', args=[pk]))
+        self.assertTrue(response.status_code == 302)
+
+        self.client.login(username='user1', password='123')
         response = self.client.post(
-            f'/users/{pk}/update/',
+            reverse('update', args=[pk]),
             data={
                 'username': 'test',
                 'first_name': 'john',
@@ -50,9 +55,17 @@ class TestCRUDUser(TestCase):
         self.assertTrue(User.objects.get(username='test').pk == pk)
 
     def test_delete_user(self):
-        user = User.objects.get(username='user')
+        user = User.objects.get(username='delete_user')
         pk = user.pk
-        self.client.login(username='user_semen', password='123')
-        response = self.client.post(f'/users/{pk}/delete/')
+
+        response = self.client.get(reverse('delete', args=[pk]))
+        self.assertTrue(response.status_code == 302)
+
+        self.client.login(username='delete_user', password='123')
+        response = self.client.post(reverse('delete', args=[pk]))
         self.assertRedirects(response, '/users/')
         self.assertFalse(User.objects.filter(pk=pk))
+
+    def test_page_users(self):
+        response = self.client.get(reverse('users'))
+        self.assertTrue(response.status_code == 200)

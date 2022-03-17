@@ -68,7 +68,14 @@ class DeleteUserView(OperationDelete):
     template_name = 'users/base_delete_user.html'
     success_message = _('Пользователь удален')
     success_url = reverse_lazy('users')
-    msg_error = _('Невозможно удалить пользователя, потому что он используется')
+    msg_error = _('У вас нет прав для изменения другого пользователя.')
+
+    def form_valid(self, form):
+        if self.get_object() != self.request.user:
+            messages.error(self.request, self.msg_error)
+        else:
+            super(DeleteUserView, self).form_valid(form)
+        return redirect(self.success_url)
 
 
 class StatusesView(OperationList):
@@ -99,6 +106,13 @@ class DeleteStatusView(OperationDelete):
     success_url = reverse_lazy('statuses')
     success_message = _('Статус удален')
     msg_error = _('Невозможно удалить статус, потому что он используется')
+
+    def form_valid(self, form):
+        if self.get_object().task.all():
+            messages.error(self.request, self.msg_error)
+        else:
+            super(DeleteStatusView, self).form_valid(form)
+        return redirect(self.success_url)
 
 
 class TaskListView(LoginRequiredMixin, FilterView):
@@ -182,3 +196,10 @@ class DeleteLabelView(OperationDelete):
     success_url = reverse_lazy('labels')
     success_message = _('Метка удалена')
     msg_error = _('Невозможно удалить метку, потому что она используется')
+
+    def form_valid(self, form):
+        if self.get_object().task.all():
+            messages.error(self.request, self.msg_error)
+        else:
+            super(DeleteLabelView, self).form_valid(form)
+        return redirect(self.success_url)

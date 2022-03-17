@@ -40,13 +40,6 @@ class OperationDelete(
         messages.error(self.request, self.msg_login_error)
         return redirect('login')
 
-    def form_valid(self, form):
-        if self.get_object().task.all():
-            messages.error(self.request, self.msg_error)
-        else:
-            super(OperationDelete, self).form_valid(form)
-        return redirect(self.success_url)
-
 
 class OperationUpdate(
     LoginRequiredMixin,

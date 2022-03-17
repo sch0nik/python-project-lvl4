@@ -13,13 +13,13 @@ class TaskFilter(django_filters.FilterSet):
         widget=forms.CheckboxInput,
     )
 
-    executor_filter = django_filters.ModelChoiceFilter(
+    executor = django_filters.ModelChoiceFilter(
         label=_('Исполнитель'),
         field_name='executor',
         queryset=User.objects.all(),
     )
 
-    label_filter = django_filters.ModelChoiceFilter(
+    label = django_filters.ModelChoiceFilter(
         label=_('Метка'),
         field_name='label',
         queryset=Label.objects.all(),
@@ -29,8 +29,8 @@ class TaskFilter(django_filters.FilterSet):
         model = Task
         fields = (
             'status',
-            'executor_filter',
-            'label_filter',
+            'executor',
+            'label',
             'my_task',
         )
 
