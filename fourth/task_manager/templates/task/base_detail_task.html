@@ -46,18 +46,14 @@
            <hr class="border-light">
           <div class="row p-1 text-center">
             <div class="col">
-              <form action="{% url 'update_task' task.pk %}">
-               <button class="btn-primary">
-                 {% translate "Изменить" %}
-               </button>
-              </form>
+                <a class="btn btn-outline-primary" href="{% url 'update_task' task.pk %}">
+                    {% translate "Изменить" %}
+                </a>
             </div>
             <div class="col">
-            <form action="{% url 'delete_task' task.pk %}">
-               <button class="btn-primary">
-                 {% translate "Удалить" %}
-               </button>
-             </form>
+                <a class="btn btn-outline-primary" href="{% url 'delete_task' task.pk %}">
+                    {% translate "УдалитьУдалить" %}
+                </a>
             </div>
           </div>
        </div>

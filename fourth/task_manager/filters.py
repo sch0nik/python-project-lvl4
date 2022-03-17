@@ -25,7 +25,6 @@ class TaskFilter(django_filters.FilterSet):
         queryset=Label.objects.all(),
     )
 
-    # TODO: поле executor должно быть представлено в виде full_name
     class Meta:
         model = Task
         fields = (
