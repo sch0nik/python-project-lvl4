@@ -2,7 +2,6 @@ from os import getenv, path
 from pathlib import Path
 
 import dj_database_url
-import rollbar
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
@@ -95,10 +94,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}
+
 ROLLBAR = {
      'access_token': getenv('ROLLBAR_ACCESS_TOKEN'),
      'environment': 'development' if DEBUG else 'production',
      'root': BASE_DIR,
  }
-
-# rollbar.init(**ROLLBAR)
