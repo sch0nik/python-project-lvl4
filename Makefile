@@ -21,7 +21,8 @@ run_heroku:
 	heroku ps:scale web=1
 
 lint:
-	poetry run flake8 task_app,
+	poetry run flake8 task_app
+	poetry run flake8 task_manager
 
 makemigrations:
 	poetry run python manage.py makemigrations
