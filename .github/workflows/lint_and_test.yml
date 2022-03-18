@@ -24,7 +24,7 @@ jobs:
         run: |
           make lint
       - name: Collect static
-        run: python manage.py collectstatic
+        run: django-admin collectstatic
       - name: Run Test
         env:
           DATABASE_URL: sqlite:///db.sqlite3
