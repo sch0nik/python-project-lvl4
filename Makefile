@@ -7,7 +7,7 @@ init:
 dev_server:
 	poetry run python manage.py runserver
 
-unic_server:
+gunic_server:
 	export DJANGO_SETTINGS_MODULE=task_manager.settings
 	gunicorn task_manager.wsgi
 
@@ -16,9 +16,6 @@ requiremets.txt:
 
 push_heroku:
 	git push heroku main
-
-run_heroku:
-	heroku ps:scale web=1
 
 lint:
 	poetry run flake8 task_app
@@ -34,7 +31,12 @@ shell:
 	poetry run python manage.py shell
 
 test:
-	poetry run python manage.py test task_app/tests/
+	poetry run coverage run manage.py test task_app/tests/
 
 bash_heroku:
 	heroku run bash
+
+collectstatic:
+	poetry run python manage.py collectstatic
+
+.PHONY: init, install, collectstatic, bash_heroku, test, shell, migrate, makemigrations, lint, push_heroku, requiremets.txt, gunic_server, dev_server
