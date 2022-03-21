@@ -62,7 +62,7 @@ class UpdateUserView(OperationUpdate):
     model = User
     template_name = 'users/base_update_user.html'
     form_class = CreateUserForm
-    success_message = _('Пользователь изменен')
+    success_message = _('Пользователь успешно изменён')
     redirect_field_name = reverse_lazy('login')
 
 
