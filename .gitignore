@@ -5,7 +5,7 @@
 __pycache__/
 staticfiles/
 htmlcov/
-temp
+temp/
 
 .env
 .python-version
@@ -13,3 +13,4 @@ temp
 *.bak
 *.mo
 .coverage
+coverage.xml

@@ -29,4 +29,3 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.COVERAGE_REPORT_TEST }}
         with:
           coverageCommand: make coverage
-          debug: true
