@@ -20,8 +20,8 @@ class TestFilters(TestCase):
         self.client.login(username='user1', password='123')
 
         pk = 2
-        response = self.client.get(reverse('tasks'), {'label': pk})
-        queryset = Task.objects.all().filter(label=pk)
+        response = self.client.get(reverse('tasks'), {'labels': pk})
+        queryset = Task.objects.all().filter(labels=pk)
         value = response.context['task_list']
         self.assertQuerysetEqual(queryset, value, ordered=False)
 
@@ -29,8 +29,8 @@ class TestFilters(TestCase):
         self.client.login(username='user1', password='123')
 
         pk = 2
-        response = self.client.get(reverse('tasks'), {'label': pk})
-        queryset = Task.objects.all().filter(label=pk)
+        response = self.client.get(reverse('tasks'), {'labels': pk})
+        queryset = Task.objects.all().filter(labels=pk)
         value = response.context['task_list']
         self.assertQuerysetEqual(queryset, value, ordered=False)
 

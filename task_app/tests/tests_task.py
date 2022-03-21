@@ -20,7 +20,7 @@ class TestTask(TestCase):
         task.autor = user
         task.status = status
         task.save()
-        task.label.set([label])
+        task.labels.set([label])
         task.save()
         cls.delete_task = task
 
@@ -37,7 +37,7 @@ class TestTask(TestCase):
                 'description': 'text',
                 'executor': User.objects.get(username='user1').pk,
                 'status': StatusTask.objects.get(name='Разработка').pk,
-                'label': Label.objects.get(name='Для всех').pk,
+                'labels': Label.objects.get(name='Для всех').pk,
             }
         )
         self.assertTrue(Task.objects.get(name='test_task1'))

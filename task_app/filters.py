@@ -18,9 +18,9 @@ class TaskFilter(django_filters.FilterSet):
         queryset=User.objects.all(),
     )
 
-    label = django_filters.ModelChoiceFilter(
-        label=_('Метка'),
-        field_name='label',
+    labels = django_filters.ModelChoiceFilter(
+        label=_('Метки'),
+        field_name='labels',
         queryset=Label.objects.all(),
     )
 
@@ -29,7 +29,7 @@ class TaskFilter(django_filters.FilterSet):
         fields = (
             'status',
             'executor',
-            'label',
+            'labels',
             'my_task',
         )
 
