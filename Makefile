@@ -31,12 +31,17 @@ shell:
 	poetry run python manage.py shell
 
 test:
-	poetry run coverage run manage.py test task_app/tests/
+	poetry run python manage.py test task_app/tests/
 
 bash_heroku:
 	heroku run bash
 
 collectstatic:
 	poetry run python manage.py collectstatic
+
+coverage:
+	poetry run coverage run --source="task_manager" manage.py test
+	poetry run coverage xml
+	poetry run coverage report
 
 .PHONY: init, install, collectstatic, bash_heroku, test, shell, migrate, makemigrations, lint, push_heroku, requiremets.txt, gunic_server, dev_server
