@@ -8,7 +8,7 @@ load_dotenv(find_dotenv())
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = getenv('TASK_MANAGER_SECRET_KEY')
+SECRET_KEY = getenv('TASK_MANAGER_SECRET_KEY', '*')
 
 DEBUG = getenv('TASK_MANAGER_SERVER_DEBUG')
 
