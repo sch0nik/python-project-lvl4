@@ -51,7 +51,7 @@ class Task(models.Model):
         Label,
         blank=True,
         related_name='task',
-        verbose_name=_('Метка'),
+        verbose_name=_('Метки'),
     )
 
     def __str__(self):
