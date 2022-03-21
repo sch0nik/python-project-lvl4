@@ -3,6 +3,7 @@
 .vscode/
 .devcontainer/
 __pycache__/
+staticfiles/
 htmlcov/
 temp/
 

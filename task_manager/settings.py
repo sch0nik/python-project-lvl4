@@ -88,7 +88,7 @@ STATIC_ROOT = path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     path.join(BASE_DIR, 'task_app/static'),
 )
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
