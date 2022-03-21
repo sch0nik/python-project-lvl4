@@ -49,9 +49,12 @@ class LoginUserView(SuccessMessageMixin, LoginView):
     success_url = reverse_lazy('index')
 
 
-class LogoutUserView(LogoutView):
+class LogoutUserView(SuccessMessageMixin, LogoutView):
+    success_message = _('Вы разлогинены')
+
     def dispatch(self, request, *args, **kwargs):
         logout(request)
+        messages.info(self.request, self.success_message)
         return redirect('index')
 
 
