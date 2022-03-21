@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, tag
 from django.urls import reverse
 
 from task_app.models import StatusTask
@@ -13,6 +13,7 @@ class TestStatus(TestCase):
         status.name = 'delete_status'
         status.save()
 
+    @tag('current')
     def test_create_status(self):
         self.client.login(username='user1', password='123')
 
@@ -22,6 +23,8 @@ class TestStatus(TestCase):
         response = self.client.post(reverse('create_status'), {'name': 'test1'})
         self.assertRedirects(response, reverse('statuses'))
         self.assertTrue(StatusTask.objects.get(name='test1'))
+        response = self.client.get(reverse('statuses'))
+        self.assertIn(b'test1', response.content)
 
     def test_update_status(self):
         self.client.login(username='user1', password='123')

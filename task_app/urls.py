@@ -16,21 +16,21 @@ urlpatterns = [
 
     # Status
     path('statuses/', views.StatusesView.as_view(), name='statuses'),
-    path('statuses/create', views.CreateStatusView.as_view(), name='create_status'),
-    path('statuses/<int:pk>/update', views.UpdateStatusView.as_view(), name='update_status'),
-    path('statuses/<int:pk>/delete', views.DeleteStatusView.as_view(), name='delete_status'),
+    path('statuses/create/', views.CreateStatusView.as_view(), name='create_status'),
+    path('statuses/<int:pk>/update/', views.UpdateStatusView.as_view(), name='update_status'),
+    path('statuses/<int:pk>/delete/', views.DeleteStatusView.as_view(), name='delete_status'),
 
     # Task
     path('tasks/', views.TaskListView.as_view(), name='tasks'),
-    path('tasks/create', views.CreateTaskView.as_view(), name='create_task'),
-    path('tasks/<int:pk>/update', views.UpdateTaskView.as_view(), name='update_task'),
-    path('tasks/<int:pk>/delete', views.DeleteTaskView.as_view(), name='delete_task'),
+    path('tasks/create/', views.CreateTaskView.as_view(), name='create_task'),
+    path('tasks/<int:pk>/update/', views.UpdateTaskView.as_view(), name='update_task'),
+    path('tasks/<int:pk>/delete/', views.DeleteTaskView.as_view(), name='delete_task'),
     path('tasks/<int:pk>/', views.TaskView.as_view(), name='task'),
 
     # Label
     path('labels/', views.LabelsView.as_view(), name='labels'),
-    path('labels/create', views.CreateLabelView.as_view(), name='create_label'),
-    path('labels/<int:pk>/update', views.UpdateLabelView.as_view(), name='update_label'),
-    path('labels/<int:pk>/delete', views.DeleteLabelView.as_view(), name='delete_label'),
+    path('labels/create/', views.CreateLabelView.as_view(), name='create_label'),
+    path('labels/<int:pk>/update/', views.UpdateLabelView.as_view(), name='update_label'),
+    path('labels/<int:pk>/delete/', views.DeleteLabelView.as_view(), name='delete_label'),
 
 ]
