@@ -69,7 +69,7 @@ class UpdateUserView(OperationUpdate):
 class DeleteUserView(OperationDelete):
     model = User
     template_name = 'users/base_delete_user.html'
-    success_message = _('Пользователь удален')
+    success_message = _('Пользователь успешно удалён')
     success_url = reverse_lazy('users')
     msg_error = _('У вас нет прав для изменения другого пользователя.')
 
@@ -91,14 +91,14 @@ class CreateStatusView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'status/base_create_status.html'
     success_url = reverse_lazy('statuses')
     form_class = CreateStatusForm
-    success_message = _('Статус создан')
+    success_message = _('Статус успешно создан')
 
 
 class UpdateStatusView(OperationUpdate):
     model = StatusTask
     template_name = 'status/base_update_status.html'
     form_class = CreateStatusForm
-    success_message = _('Статус изменен')
+    success_message = _('Статус успешно изменён')
     success_url = reverse_lazy('statuses')
     redirect_field_name = reverse_lazy('statuses')
 
@@ -107,7 +107,7 @@ class DeleteStatusView(OperationDelete):
     model = StatusTask
     template_name = 'status/base_delete_status.html'
     success_url = reverse_lazy('statuses')
-    success_message = _('Статус удален')
+    success_message = _('Статус успешно удалён')
     msg_error = _('Невозможно удалить статус, потому что он используется')
 
     def form_valid(self, form):
@@ -129,7 +129,7 @@ class CreateTaskView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'task/base_create_task.html'
     success_url = reverse_lazy('tasks')
     form_class = CreateTaskForm
-    success_message = _('Задача создана')
+    success_message = _('Задача успешно создана')
 
     def form_valid(self, form):
         new = form.save(commit=False)
@@ -142,7 +142,7 @@ class UpdateTaskView(OperationUpdate):
     template_name = 'task/base_update_task.html'
     model = Task
     form_class = CreateTaskForm
-    success_message = _('Задача изменена')
+    success_message = _('Задача успешно изменена')
     success_url = reverse_lazy('tasks')
     redirect_field_name = reverse_lazy('tasks')
 
@@ -151,7 +151,7 @@ class DeleteTaskView(OperationDelete):
     template_name = 'task/base_delete_task.html'
     model = Task
     success_url = reverse_lazy('tasks')
-    success_message = _('Задача удалена')
+    success_message = _('Задача успешно удалена')
 
     def form_valid(self, form):
         if self.get_object().autor != self.request.user:
@@ -181,14 +181,14 @@ class CreateLabelView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'label/base_create_label.html'
     success_url = reverse_lazy('labels')
     form_class = CreateLabelForm
-    success_message = _('Метка создана')
+    success_message = _('Метка успешно создана')
 
 
 class UpdateLabelView(OperationUpdate):
     template_name = 'label/base_update_label.html'
     model = Label
     form_class = CreateLabelForm
-    success_message = _('Метка изменена')
+    success_message = _('Метка успешно изменена')
     success_url = reverse_lazy('labels')
     redirect_field_name = reverse_lazy('labels')
 
@@ -197,7 +197,7 @@ class DeleteLabelView(OperationDelete):
     template_name = 'label/base_delete_label.html'
     model = Label
     success_url = reverse_lazy('labels')
-    success_message = _('Метка удалена')
+    success_message = _('Метка успешно удалена')
     msg_error = _('Невозможно удалить метку, потому что она используется')
 
     def form_valid(self, form):
