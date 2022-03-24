@@ -11,7 +11,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
 from django_filters.views import FilterView
 
-from task_app.all_operations import OperationList, OperationDelete, \
+from task_app.mixins import OperationList, OperationDelete, \
     OperationUpdate
 from task_app.filters import TaskFilter
 from task_app.forms import (
