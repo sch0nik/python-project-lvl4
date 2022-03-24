@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from task_app.models import Label
+from task_app.models import Label, Task
 
 
 class TestLabels(TestCase):
@@ -48,3 +48,12 @@ class TestLabels(TestCase):
         response = self.client.post(reverse('delete_label', args=[pk]))
         self.assertRedirects(response, reverse('labels'))
         self.assertFalse(Label.objects.filter(pk=pk))
+
+    def test_label(self):
+        self.client.login(username='user1', password='123')
+
+        pk = 2
+        response = self.client.get(reverse('tasks'), {'labels': pk})
+        queryset = Task.objects.all().filter(labels=pk)
+        value = response.context['task_list']
+        self.assertQuerysetEqual(queryset, value, ordered=False)

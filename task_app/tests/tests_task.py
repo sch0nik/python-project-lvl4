@@ -67,3 +67,21 @@ class TestTask(TestCase):
         response = self.client.post(reverse('delete_task', args=[pk]))
         self.assertRedirects(response, reverse('tasks'))
         self.assertFalse(Task.objects.filter(pk=pk))
+
+    def test_executor(self):
+        self.client.login(username='user1', password='123')
+
+        pk = 2
+        response = self.client.get(reverse('tasks'), {'labels': pk})
+        queryset = Task.objects.all().filter(labels=pk)
+        value = response.context['task_list']
+        self.assertQuerysetEqual(queryset, value, ordered=False)
+
+    def test_my_task(self):
+        self.client.login(username='user1', password='123')
+        pk = User.objects.get(username='user1').pk
+
+        response = self.client.get(reverse('tasks'), {'my_task': 'on'})
+        queryset = Task.objects.all().filter(autor=pk)
+        value = response.context['task_list']
+        self.assertQuerysetEqual(queryset, value, ordered=False)
