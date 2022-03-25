@@ -1,7 +1,10 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from task_app.models import User, Task, Label, StatusTask
+from apps.label_app.models import Label
+from apps.status_app.models import StatusTask
+from apps.task_app.models import Task
+from apps.user_app.models import User
 
 
 class TestFilters(TestCase):
@@ -37,7 +40,7 @@ class TestFilters(TestCase):
 
         response = self.client.get(
             reverse('tasks'),
-            data = {
+            data={
                 'status': status.pk,
                 'labels': label.pk,
             }

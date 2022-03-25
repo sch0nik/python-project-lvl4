@@ -1,7 +1,8 @@
-from django.test import TestCase, tag
+from django.test import TestCase
 from django.urls import reverse
 
-from task_app.models import StatusTask, Task
+from apps.status_app.models import StatusTask
+from apps.task_app.models import Task
 
 
 class TestStatus(TestCase):

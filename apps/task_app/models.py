@@ -1,27 +1,9 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-
-class User(AbstractUser):
-    def __str__(self):
-        return self.get_full_name()
-
-
-class StatusTask(models.Model):
-    name = models.CharField(_('Имя'), max_length=100, unique=True)
-    created_at = models.DateTimeField(_('Дата создания'), auto_now_add=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Label(models.Model):
-    name = models.CharField(_('Имя'), max_length=100, unique=True)
-    created_at = models.DateTimeField(_('Дата создания'), auto_now_add=True)
-
-    def __str__(self):
-        return self.name
+from apps.label_app.models import Label
+from apps.status_app.models import StatusTask
+from apps.user_app.models import User
 
 
 class Task(models.Model):

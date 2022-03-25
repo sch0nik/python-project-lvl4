@@ -18,8 +18,7 @@ push_heroku:
 	git push heroku main
 
 lint:
-	poetry run flake8 task_app
-	poetry run flake8 task_manager
+	poetry run flake8
 
 makemigrations:
 	poetry run python manage.py makemigrations
@@ -31,7 +30,7 @@ shell:
 	poetry run python manage.py shell
 
 test:
-	poetry run python manage.py test task_app/tests/
+	poetry run python manage.py test tests/
 
 bash_heroku:
 	heroku run bash

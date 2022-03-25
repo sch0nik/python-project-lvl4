@@ -1,6 +1,6 @@
 [
 {
-    "model": "task_app.user",
+    "model": "user_app.user",
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$320000$i5C5JtSFBPVg1bTU8m6dwQ$kJMaHg9HrIslK3ucNnG+515K95LtTaD6vTHyeoc2em0=",
@@ -18,7 +18,7 @@
     }
 },
 {
-    "model": "task_app.user",
+    "model": "user_app.user",
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$320000$TABfsROvX8dNz1QIiEF5r1$7deCiwf3iJXGFEJi1VCFW/SDRoRSOI93AIMMZBNL2OA=",
@@ -36,7 +36,7 @@
     }
 },
 {
-    "model": "task_app.user",
+    "model": "user_app.user",
     "pk": 3,
     "fields": {
         "password": "pbkdf2_sha256$320000$FYUUgDaZ30wERyjcxeqkeo$H+huT1DzA6lQp80+7UmUm9cPFwIYJ8RmvpzEATJAU7I=",
@@ -54,7 +54,7 @@
     }
 },
 {
-    "model": "task_app.user",
+    "model": "user_app.user",
     "pk": 4,
     "fields": {
         "password": "pbkdf2_sha256$320000$OftLobpQpu1WaSozVA3B2f$E61IBJ38Dv6ZkpmCd1sYZfTurfS5M9zX+O+1Ic3cfwE=",
@@ -72,7 +72,7 @@
     }
 },
 {
-    "model": "task_app.user",
+    "model": "user_app.user",
     "pk": 5,
     "fields": {
         "password": "pbkdf2_sha256$320000$0OYSIkNtAeuNlJ7g4D3L5r$pNDzDuGfjMxVGmr5EqCVfqPx8BNzJ1HK4g83RFuAYb8=",
@@ -90,7 +90,7 @@
     }
 },
 {
-    "model": "task_app.user",
+    "model": "user_app.user",
     "pk": 6,
     "fields": {
         "password": "pbkdf2_sha256$320000$qbfycP8x4IEj5LFdf5ZsHK$70BQN7ff29CI6to73PeqD+JDVvU7tjPV8gfNxRBUVLI=",
@@ -108,7 +108,7 @@
     }
 },
 {
-    "model": "task_app.user",
+    "model": "user_app.user",
     "pk": 7,
     "fields": {
         "password": "pbkdf2_sha256$320000$KF1Cv4NbbKdqf6VR6kY6sh$Yc0Vo8q6A2FTkVmVypB8kf/3RypF43TE69UyyTYf3/o=",
@@ -126,7 +126,7 @@
     }
 },
 {
-    "model": "task_app.statustask",
+    "model": "status_app.statustask",
     "pk": 1,
     "fields": {
         "name": "В работе",
@@ -134,7 +134,7 @@
     }
 },
 {
-    "model": "task_app.statustask",
+    "model": "status_app.statustask",
     "pk": 2,
     "fields": {
         "name": "Разработка",
@@ -142,7 +142,7 @@
     }
 },
 {
-    "model": "task_app.statustask",
+    "model": "status_app.statustask",
     "pk": 3,
     "fields": {
         "name": "Проектирование",
@@ -150,7 +150,7 @@
     }
 },
 {
-    "model": "task_app.statustask",
+    "model": "status_app.statustask",
     "pk": 4,
     "fields": {
         "name": "Сдача",
@@ -158,7 +158,7 @@
     }
 },
 {
-    "model": "task_app.label",
+    "model": "label_app.label",
     "pk": 1,
     "fields": {
         "name": "Для всех",
@@ -166,7 +166,7 @@
     }
 },
 {
-    "model": "task_app.label",
+    "model": "label_app.label",
     "pk": 2,
     "fields": {
         "name": "Лидам",

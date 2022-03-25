@@ -2,6 +2,7 @@ from os import getenv, path
 from pathlib import Path
 
 import dj_database_url
+import rollbar
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
@@ -22,7 +23,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'task_manager',
-    'task_app',
+    'apps.task_app',
+    'apps.user_app',
+    'apps.label_app',
+    'apps.status_app',
     'bootstrap4',
     'django_filters',
 ]
@@ -36,15 +40,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
+if not DEBUG:
+    MIDDLEWARE.append('rollbar.contrib.django.middleware.RollbarNotifierMiddleware')
+
 
 ROOT_URLCONF = 'task_manager.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,7 +79,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'task_app.User'
+AUTH_USER_MODEL = 'user_app.User'
 
 LANGUAGE_CODE = 'ru-ru'
 
@@ -86,7 +92,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
-    path.join(BASE_DIR, 'task_app/static'),
+    path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
@@ -113,3 +119,5 @@ ROLLBAR = {
     'environment': 'development' if DEBUG else 'production',
     'root': BASE_DIR,
 }
+
+rollbar.init(**ROLLBAR)

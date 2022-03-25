@@ -1,7 +1,10 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from task_app.models import Task, Label, StatusTask, User
+from apps.label_app.models import Label
+from apps.status_app.models import StatusTask
+from apps.task_app.models import Task
+from apps.user_app.models import User
 
 
 class TestTask(TestCase):
