@@ -19,4 +19,3 @@ class CreateUserForm(UserCreationForm):
             'last_name',
             'username',
         )
-

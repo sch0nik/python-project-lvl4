@@ -1,4 +1,4 @@
-from django.test import TestCase,tag
+from django.test import TestCase, tag
 from django.urls import reverse
 
 from apps.label_app.models import Label

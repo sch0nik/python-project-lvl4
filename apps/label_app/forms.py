@@ -7,5 +7,3 @@ class CreateLabelForm(forms.ModelForm):
     class Meta:
         model = Label
         fields = ('name',)
-
-
