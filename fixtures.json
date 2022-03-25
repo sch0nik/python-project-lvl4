@@ -1,201 +1,29 @@
 [
 {
-    "model": "task_app.user",
-    "pk": 1,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$i5C5JtSFBPVg1bTU8m6dwQ$kJMaHg9HrIslK3ucNnG+515K95LtTaD6vTHyeoc2em0=",
-        "last_login": "2022-03-21T21:17:52.475Z",
-        "is_superuser": false,
-        "username": "user1",
-        "first_name": "fAaaa",
-        "last_name": "lAaaa",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-03-17T21:03:53.115Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "task_app.user",
-    "pk": 2,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$TABfsROvX8dNz1QIiEF5r1$7deCiwf3iJXGFEJi1VCFW/SDRoRSOI93AIMMZBNL2OA=",
-        "last_login": "2022-03-24T09:00:36.387Z",
-        "is_superuser": false,
-        "username": "user2",
-        "first_name": "fBbb",
-        "last_name": "lBbbb",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-03-17T21:03:53.809Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "task_app.user",
-    "pk": 3,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$FYUUgDaZ30wERyjcxeqkeo$H+huT1DzA6lQp80+7UmUm9cPFwIYJ8RmvpzEATJAU7I=",
-        "last_login": "2022-03-24T08:21:22.225Z",
-        "is_superuser": false,
-        "username": "user3",
-        "first_name": "fCccc",
-        "last_name": "lCccc",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-03-17T21:03:54.161Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "task_app.user",
-    "pk": 4,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$OftLobpQpu1WaSozVA3B2f$E61IBJ38Dv6ZkpmCd1sYZfTurfS5M9zX+O+1Ic3cfwE=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "user4",
-        "first_name": "fDddd",
-        "last_name": "lDddd",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-03-17T21:03:54.524Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "task_app.user",
-    "pk": 5,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$0OYSIkNtAeuNlJ7g4D3L5r$pNDzDuGfjMxVGmr5EqCVfqPx8BNzJ1HK4g83RFuAYb8=",
-        "last_login": "2022-03-24T09:06:12.702Z",
-        "is_superuser": false,
-        "username": "user5",
-        "first_name": "fEeee",
-        "last_name": "lEeee",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-03-17T21:03:54.899Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "task_app.user",
-    "pk": 6,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$qbfycP8x4IEj5LFdf5ZsHK$70BQN7ff29CI6to73PeqD+JDVvU7tjPV8gfNxRBUVLI=",
-        "last_login": "2022-03-24T09:08:22.932Z",
-        "is_superuser": false,
-        "username": "user6",
-        "first_name": "fFfff",
-        "last_name": "lFfff",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-03-17T21:03:55.262Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "task_app.user",
-    "pk": 7,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$KF1Cv4NbbKdqf6VR6kY6sh$Yc0Vo8q6A2FTkVmVypB8kf/3RypF43TE69UyyTYf3/o=",
-        "last_login": "2022-03-21T21:30:38.706Z",
-        "is_superuser": false,
-        "username": "sch",
-        "first_name": "Sss",
-        "last_name": "Aaaa",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-03-21T21:23:25.854Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "task_app.statustask",
-    "pk": 1,
-    "fields": {
-        "name": "В работе",
-        "created_at": "2022-03-17T21:03:55.616Z"
-    }
-},
-{
-    "model": "task_app.statustask",
-    "pk": 2,
-    "fields": {
-        "name": "Разработка",
-        "created_at": "2022-03-17T21:03:55.636Z"
-    }
-},
-{
-    "model": "task_app.statustask",
-    "pk": 3,
-    "fields": {
-        "name": "Проектирование",
-        "created_at": "2022-03-17T21:03:55.680Z"
-    }
-},
-{
-    "model": "task_app.statustask",
-    "pk": 4,
-    "fields": {
-        "name": "Сдача",
-        "created_at": "2022-03-17T21:03:55.691Z"
-    }
-},
-{
-    "model": "task_app.label",
-    "pk": 1,
-    "fields": {
-        "name": "Для всех",
-        "created_at": "2022-03-17T21:03:55.705Z"
-    }
-},
-{
-    "model": "task_app.label",
-    "pk": 2,
-    "fields": {
-        "name": "Лидам",
-        "created_at": "2022-03-17T21:03:55.736Z"
-    }
-},
-{
     "model": "task_app.task",
     "pk": 1,
     "fields": {
-        "name": "task1",
-        "description": "dfasg",
-        "executor": 2,
-        "status": 2,
-        "created_at": "2022-03-17T21:06:56.470Z",
-        "autor": 5,
-        "labels": []
+        "name": "Первая задача",
+        "description": "Описание",
+        "executor": 4,
+        "status": 1,
+        "created_at": "2022-03-25T00:45:36.135Z",
+        "autor": 1,
+        "labels": [
+            1
+        ]
     }
 },
 {
     "model": "task_app.task",
     "pk": 2,
     "fields": {
-        "name": "task2",
-        "description": "fdhsfdgjh",
-        "executor": 2,
-        "status": 3,
-        "created_at": "2022-03-17T21:07:08.712Z",
-        "autor": 5,
+        "name": "Вторая задача",
+        "description": "Описание описание",
+        "executor": 3,
+        "status": 4,
+        "created_at": "2022-03-25T00:45:36.477Z",
+        "autor": 6,
         "labels": [
             2
         ]
@@ -205,12 +33,12 @@
     "model": "task_app.task",
     "pk": 3,
     "fields": {
-        "name": "task3",
-        "description": "fdhdajas",
-        "executor": 1,
-        "status": 3,
-        "created_at": "2022-03-17T21:07:22.460Z",
-        "autor": 5,
+        "name": "Третья задача",
+        "description": "Описание описание описание",
+        "executor": 2,
+        "status": 1,
+        "created_at": "2022-03-25T00:45:36.532Z",
+        "autor": 3,
         "labels": [
             1
         ]
@@ -220,79 +48,119 @@
     "model": "task_app.task",
     "pk": 4,
     "fields": {
-        "name": "task4",
-        "description": "ehsa",
-        "executor": 5,
-        "status": 4,
-        "created_at": "2022-03-17T21:07:42.684Z",
+        "name": "task1",
+        "description": "dfasg",
+        "executor": 2,
+        "status": 2,
+        "created_at": "2022-03-25T08:01:28.978Z",
         "autor": 5,
-        "labels": []
+        "labels": [
+            3
+        ]
+    }
+},
+{
+    "model": "task_app.task",
+    "pk": 5,
+    "fields": {
+        "name": "task2",
+        "description": "fdhsfdgjh",
+        "executor": 2,
+        "status": 3,
+        "created_at": "2022-03-25T08:01:29.093Z",
+        "autor": 5,
+        "labels": [
+            1
+        ]
+    }
+},
+{
+    "model": "task_app.task",
+    "pk": 6,
+    "fields": {
+        "name": "task3",
+        "description": "fdhdajas",
+        "executor": 1,
+        "status": 3,
+        "created_at": "2022-03-25T08:01:29.170Z",
+        "autor": 5,
+        "labels": [
+            1
+        ]
     }
 },
 {
     "model": "task_app.task",
     "pk": 7,
     "fields": {
-        "name": "task_adsf",
-        "description": "fddsaf",
-        "executor": 4,
-        "status": 1,
-        "created_at": "2022-03-17T21:08:51.738Z",
-        "autor": 3,
-        "labels": []
+        "name": "task4",
+        "description": "ehsa",
+        "executor": 5,
+        "status": 4,
+        "created_at": "2022-03-25T08:01:29.203Z",
+        "autor": 5,
+        "labels": [
+            3
+        ]
     }
 },
 {
     "model": "task_app.task",
     "pk": 8,
     "fields": {
-        "name": "task_wet",
-        "description": "svsd",
-        "executor": 6,
-        "status": 4,
-        "created_at": "2022-03-17T21:09:05.786Z",
+        "name": "task_adsf",
+        "description": "fddsaf",
+        "executor": 4,
+        "status": 1,
+        "created_at": "2022-03-25T08:01:29.236Z",
         "autor": 3,
-        "labels": []
+        "labels": [
+            3
+        ]
     }
 },
 {
     "model": "task_app.task",
     "pk": 9,
     "fields": {
-        "name": "task_xbds",
-        "description": "rwgwr",
-        "executor": 2,
-        "status": 2,
-        "created_at": "2022-03-17T21:09:29.786Z",
+        "name": "task_wet",
+        "description": "svsd",
+        "executor": 6,
+        "status": 4,
+        "created_at": "2022-03-25T08:01:29.269Z",
         "autor": 3,
-        "labels": []
+        "labels": [
+            3
+        ]
     }
 },
 {
     "model": "task_app.task",
     "pk": 10,
     "fields": {
-        "name": "task_xcv",
-        "description": "sdg",
-        "executor": 4,
+        "name": "task_xbds",
+        "description": "rwgwr",
+        "executor": 2,
         "status": 2,
-        "created_at": "2022-03-17T21:09:41.993Z",
+        "created_at": "2022-03-25T08:01:29.302Z",
         "autor": 3,
-        "labels": []
+        "labels": [
+            3
+        ]
     }
 },
 {
     "model": "task_app.task",
-    "pk": 12,
+    "pk": 11,
     "fields": {
-        "name": "task_erydcgvbc",
-        "description": "dzbd",
-        "executor": 7,
+        "name": "task_xcv",
+        "description": "sdg",
+        "executor": 4,
         "status": 2,
-        "created_at": "2022-03-24T08:56:11.118Z",
+        "created_at": "2022-03-25T08:01:29.335Z",
         "autor": 3,
         "labels": [
-            2
+            3
         ]
     }
 },
@@ -300,11 +168,26 @@
     "model": "task_app.task",
     "pk": 13,
     "fields": {
+        "name": "task_erydcgvbc",
+        "description": "dzbd",
+        "executor": 5,
+        "status": 2,
+        "created_at": "2022-03-25T08:05:35.797Z",
+        "autor": 3,
+        "labels": [
+            1
+        ]
+    }
+},
+{
+    "model": "task_app.task",
+    "pk": 14,
+    "fields": {
         "name": "task_xcvzdr",
         "description": "wreter",
         "executor": 4,
         "status": 2,
-        "created_at": "2022-03-24T08:57:08.287Z",
+        "created_at": "2022-03-25T08:05:35.891Z",
         "autor": 6,
         "labels": [
             2
@@ -313,29 +196,14 @@
 },
 {
     "model": "task_app.task",
-    "pk": 14,
+    "pk": 15,
     "fields": {
         "name": "task_ewrvxbv",
         "description": "dfhdsh",
         "executor": 5,
         "status": 1,
-        "created_at": "2022-03-24T09:00:18.719Z",
+        "created_at": "2022-03-25T08:05:35.957Z",
         "autor": 6,
-        "labels": [
-            1
-        ]
-    }
-},
-{
-    "model": "task_app.task",
-    "pk": 15,
-    "fields": {
-        "name": "task_xbnolj",
-        "description": "wer",
-        "executor": 5,
-        "status": 3,
-        "created_at": "2022-03-24T09:00:57.994Z",
-        "autor": 2,
         "labels": [
             1
         ]
@@ -345,15 +213,194 @@
     "model": "task_app.task",
     "pk": 16,
     "fields": {
+        "name": "task_xbnolj",
+        "description": "wer",
+        "executor": 5,
+        "status": 3,
+        "created_at": "2022-03-25T08:05:35.990Z",
+        "autor": 2,
+        "labels": [
+            2
+        ]
+    }
+},
+{
+    "model": "task_app.task",
+    "pk": 17,
+    "fields": {
         "name": "task_afl",
         "description": "dfghsdj",
-        "executor": 7,
+        "executor": 2,
         "status": 2,
-        "created_at": "2022-03-24T09:09:32.096Z",
+        "created_at": "2022-03-25T08:05:36.022Z",
         "autor": 6,
         "labels": [
-            1
+            2
         ]
+    }
+},
+{
+    "model": "user_app.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$tvoY0hi14eWpT5GDn4b9rQ$mIn4m9RAzsx4l2yXx2PZ0sP4T2I1yUhzJx7PKZ/LfmM=",
+        "last_login": "2022-03-25T07:38:38.154Z",
+        "is_superuser": false,
+        "username": "user1",
+        "first_name": "fAaaa",
+        "last_name": "lAaaa",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-03-25T00:45:31.663Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user_app.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$KyZWecHnIek1m13oosKOKx$3oJQ6XwdTAr+DbPfaUI9cWPE68b6Yxkm2fLH+fdFqsA=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user2",
+        "first_name": "fBbb",
+        "last_name": "lBbbb",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-03-25T00:45:32.086Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user_app.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$m94zQwgJ0YEsDJUGORVnfG$fAohcNs2LlQJ1qfBaWDGtgGyh9OKSHiq/9Anz/Ms6TQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user3",
+        "first_name": "fCccc",
+        "last_name": "lCccc",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-03-25T00:45:32.471Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user_app.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$hUC08cdqHiX5DF5QKfVAdW$TzqIaj0Kfpl85CcE6xGQFZuqsnwPY8r1PccVyiaWQPQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user4",
+        "first_name": "fDddd",
+        "last_name": "lDddd",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-03-25T00:45:32.868Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user_app.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$S9vGJdAAGqlfmn4lZ3xXga$FE5CDAkAX7KaC5hPx29zmuR2u8j6aHje/ovgGXMzzIk=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user5",
+        "first_name": "fEeee",
+        "last_name": "lEeee",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-03-25T00:45:33.230Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user_app.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$KZ28nahBAUllBhO09vPLZh$4lQqUSLzGvt5yi9Ajo7F0AHZILU+GDdzyrgyu4W9lY4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user6",
+        "first_name": "fFfff",
+        "last_name": "lFfff",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-03-25T00:45:33.626Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "label_app.label",
+    "pk": 1,
+    "fields": {
+        "name": "Для всех",
+        "created_at": "2022-03-25T00:45:34.037Z"
+    }
+},
+{
+    "model": "label_app.label",
+    "pk": 2,
+    "fields": {
+        "name": "Лидам",
+        "created_at": "2022-03-25T00:45:34.045Z"
+    }
+},
+{
+    "model": "label_app.label",
+    "pk": 3,
+    "fields": {
+        "name": "Бэкэендерам",
+        "created_at": "2022-03-25T07:51:32.794Z"
+    }
+},
+{
+    "model": "status_app.statustask",
+    "pk": 1,
+    "fields": {
+        "name": "В работе",
+        "created_at": "2022-03-25T00:45:33.992Z"
+    }
+},
+{
+    "model": "status_app.statustask",
+    "pk": 2,
+    "fields": {
+        "name": "Разработка",
+        "created_at": "2022-03-25T00:45:34.001Z"
+    }
+},
+{
+    "model": "status_app.statustask",
+    "pk": 3,
+    "fields": {
+        "name": "Проектирование",
+        "created_at": "2022-03-25T00:45:34.012Z"
+    }
+},
+{
+    "model": "status_app.statustask",
+    "pk": 4,
+    "fields": {
+        "name": "Сдача",
+        "created_at": "2022-03-25T00:45:34.023Z"
     }
 }
 ]

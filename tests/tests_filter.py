@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase,tag
 from django.urls import reverse
 
 from apps.label_app.models import Label
@@ -48,6 +48,7 @@ class TestFilters(TestCase):
         value = response.context['object_list']
         self.assertQuerysetEqual(queryset, value, ordered=False)
 
+    @tag('current')
     def test_executor_label(self):
         executor_name = 'user2'
         label_name = 'Лидам'
@@ -63,7 +64,7 @@ class TestFilters(TestCase):
                 'labels': label.pk,
             }
         )
-        queryset = Task.objects.filter(pk=executor.pk).filter(labels=label.pk)
+        queryset = Task.objects.filter(executor=executor.pk).filter(labels=label.pk)
         value = response.context['task_list']
         self.assertQuerysetEqual(queryset, value, ordered=False)
 

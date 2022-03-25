@@ -32,6 +32,9 @@ shell:
 test:
 	poetry run python manage.py test tests/
 
+tagged_tests:
+	poetry run python manage.py test --tag=current tests/
+
 bash_heroku:
 	heroku run bash
 
@@ -42,5 +45,8 @@ coverage:
 	poetry run coverage run manage.py test
 	poetry run coverage xml
 	poetry run coverage report
+
+dumpdata:
+	poetry run python manage.py dumpdata --indent 4 --exclude=auth --exclude=contenttypes --output fixtures.json
 
 .PHONY: init, install, collectstatic, bash_heroku, test, shell, migrate, makemigrations, lint, push_heroku, requiremets.txt, gunic_server, dev_server
