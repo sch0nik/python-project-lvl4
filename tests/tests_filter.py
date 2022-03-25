@@ -87,7 +87,8 @@ class TestFilters(TestCase):
                 'my_task': my_task,
             }
         )
-        queryset = Task.objects.filter(autor=autor.pk).filter(executor=executor.pk).filter(status=status.pk)
+        queryset = Task.objects.filter(autor=autor.pk)
+        queryset = queryset.filter(executor=executor.pk).filter(status=status.pk)
         value = response.context['task_list']
         self.assertQuerysetEqual(queryset, value, ordered=False)
 
@@ -110,7 +111,8 @@ class TestFilters(TestCase):
                 'my_task': my_task,
             }
         )
-        queryset = Task.objects.filter(autor=autor.pk).filter(labels=label.pk).filter(status=status.pk)
+        queryset = Task.objects.filter(autor=autor.pk)
+        queryset = queryset.filter(labels=label.pk).filter(status=status.pk)
         value = response.context['task_list']
         self.assertQuerysetEqual(queryset, value, ordered=False)
 
@@ -133,6 +135,7 @@ class TestFilters(TestCase):
                 'my_task': my_task,
             }
         )
-        queryset = Task.objects.filter(autor=autor.pk).filter(labels=label.pk).filter(executor=executor.pk)
+        queryset = Task.objects.filter(autor=autor.pk)
+        queryset = queryset.filter(labels=label.pk).filter(executor=executor.pk)
         value = response.context['task_list']
         self.assertQuerysetEqual(queryset, value, ordered=False)
