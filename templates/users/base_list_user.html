@@ -37,10 +37,10 @@
                 <td>{{ usr.date_joined }}</td>
                 {% if user.is_authenticated %}
                 <td>
-                    <a class="btn btn-outline-primary" href="{% url 'update' usr.pk %}">
+                    <a class="btn btn-outline-warning" href="{% url 'update' usr.pk %}">
                         {% translate "Изменить" %}
                     </a>
-                    <a class="btn btn-outline-primary" href="{% url 'delete' usr.pk %}">
+                    <a class="btn btn-outline-danger" href="{% url 'delete' usr.pk %}">
                         {% translate "Удалить" %}
                     </a>
                 </td>
