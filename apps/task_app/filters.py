@@ -36,4 +36,6 @@ class TaskFilter(django_filters.FilterSet):
         )
 
     def my_task_filter(self, queryset, name, value):
+        # import pdb
+        # pdb.set_trace()
         return queryset.filter(autor=self.request.user) if value else queryset

@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'task_manager',
     'apps.task_app',
     'apps.user_app',
@@ -121,3 +122,5 @@ ROLLBAR = {
 }
 
 rollbar.init(**ROLLBAR)
+
+SHELL_PLUS_PRINT_SQL = True
